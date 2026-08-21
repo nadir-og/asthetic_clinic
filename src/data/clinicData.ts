@@ -40,6 +40,9 @@ export interface BeforeAfterCase {
   afterImage: string;
   caseNote: string;
   disclaimer: string;
+  fitzpatrick: string;
+  sessions: string;
+  parameter: string;
 }
 
 export interface Testimonial {
@@ -67,7 +70,7 @@ export const clinic = {
   tagline: 'Best in Class Medical Aesthetics | Non-Surgical & Surgical Transformation',
   rating: '4.9★ (73+ Google Reviews)',
   announcement:
-    '🎉 1st Anniversary Special: Up to 70% OFF on Hydra Facials, Hair Therapies & Laser! Book via WhatsApp.',
+    '✨ Limited-Time Seasonal Privilege: Up to 50% OFF Signature Hydra Facials & Laser | Book via WhatsApp',
   address: 'Model Town Road, B Block, Multan',
   timings: 'Mon – Sat: 1:00 PM – 9:00 PM',
   mapsQuery: 'Model Town Road, B Block, Multan',
@@ -213,8 +216,8 @@ export const filterTabs: ('All' | ServiceCategory)[] = [
 export const bundles: Bundle[] = [
   {
     id: 'glow-up',
-    name: 'Glow Up Starter',
-    badge: 'Great Value',
+    name: 'Clear Skin & Radiance Protocol',
+    badge: 'Signature Option',
     treatments: [
       '1x Hydra Facial Glow',
       '1x Chemical Peel (Lite)',
@@ -226,13 +229,13 @@ export const bundles: Bundle[] = [
   },
   {
     id: 'clear-skin-glow',
-    name: 'Clear Skin & Glow Bundle',
+    name: 'Signature Hair Revival Pack',
     badge: 'Best Seller',
     treatments: [
-      '3x Hydra Facial Sessions',
-      '2x Acne Scar Resurfacing',
-      '1x Chemical Peel',
-      'Free skin analysis & follow-up',
+      '4x GFC Hair Therapy Sessions',
+      '2x PRP Scalp Boosters',
+      'Micro-needling & laser stimulation',
+      'Doctor follow-up & analysis',
     ],
     price: 35000,
     originalPrice: 95000,
@@ -240,12 +243,12 @@ export const bundles: Bundle[] = [
   },
   {
     id: 'total-transformation',
-    name: 'Total Transformation',
-    badge: 'Premium',
+    name: 'VIP Full Body Glow',
+    badge: 'Premium Privilege',
     treatments: [
       '6x Laser Hair Removal (Full Body)',
-      '3x Hair Density Restoration',
-      '2x Hydra Facial',
+      '2x Signature Hydra Facial Glow',
+      '1x Body Polish & Radiance treatment',
       'Dedicated care coordinator',
     ],
     price: 75000,
@@ -258,27 +261,63 @@ export const bundles: Bundle[] = [
 export const beforeAfterCases: BeforeAfterCase[] = [
   {
     id: 'hair-density',
-    category: 'Hair Restoration',
-    title: 'Hair Density Restoration',
+    category: 'Hair Density',
+    title: 'Crown & Hairline Follicular Density Restoration',
     beforeImage:
-      'https://images.pexels.com/photos/1586989/pexels-photo-1586989.jpeg?auto=compress&cs=tinysrgb&w=1000',
+      'https://images.pexels.com/photos/3998419/pexels-photo-3998419.jpeg?auto=compress&cs=tinysrgb&w=1000',
     afterImage:
-      'https://images.pexels.com/photos/35267456/pexels-photo-35267456.jpeg?auto=compress&cs=tinysrgb&w=1000',
+      'https://images.pexels.com/photos/3992875/pexels-photo-3992875.jpeg?auto=compress&cs=tinysrgb&w=1000',
     caseNote:
-      'Patient underwent 6 sessions of GFC + PRP therapy over 3 months. Visible density improvement observed from session 3 onward.',
-    disclaimer: 'Stylized representation for demonstration purposes',
+      'Male patient presenting with diffuse crown thinning and receding frontal hairline. Underwent 6 sessions of GFC + Autologous PRP protocol over 14 weeks. High follicular density restoration observed with zero surgical downtime.',
+    disclaimer: 'Clinical photographic documentation of patient response at 14 weeks',
+    fitzpatrick: 'Fitzpatrick Type IV',
+    sessions: '6 Sessions (GFC + PRP)',
+    parameter: 'Autologous GFC + 1540nm Scalp Laser',
   },
   {
     id: 'acne-scar',
-    category: 'Acne Scars',
-    title: 'Acne Scar Clearance',
+    category: 'Acne Scars & Texture',
+    title: 'Deep Rolling Acne Scar & Texture Resurfacing',
     beforeImage:
-      'https://images.pexels.com/photos/6706877/pexels-photo-6706877.jpeg?auto=compress&cs=tinysrgb&w=1000',
+      'https://images.pexels.com/photos/3762771/pexels-photo-3762771.jpeg?auto=compress&cs=tinysrgb&w=1000',
     afterImage:
       'https://images.pexels.com/photos/3762761/pexels-photo-3762761.jpeg?auto=compress&cs=tinysrgb&w=1000',
     caseNote:
-      'Patient received 4 fractional laser resurfacing sessions combined with medical peels. Scar depth reduced by ~70% with improved skin texture.',
-    disclaimer: 'Stylized representation for demonstration purposes',
+      'Close-up bilateral cheek profile with active erythema and grade-3 atrophic rolling acne scars. Treated with 4 sessions of Fractional Erbium-Glass Laser combined with cross-linked HA hydration. 78% depth reduction with radiant glass skin outcome.',
+    disclaimer: 'Clinical photographic documentation under uniform medical lighting',
+    fitzpatrick: 'Fitzpatrick Type III',
+    sessions: '4 Sessions',
+    parameter: '1540nm Fractional Er:Glass + Medical Peel',
+  },
+  {
+    id: 'skin-radiance',
+    category: 'Pigmentation & Melasma',
+    title: 'Dermal Melasma & Epidermal Tone Harmonization',
+    beforeImage:
+      'https://images.pexels.com/photos/3762871/pexels-photo-3762871.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    afterImage:
+      'https://images.pexels.com/photos/3762461/pexels-photo-3762461.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    caseNote:
+      'Patient treated with dermatologist-formulated medical TCA depigmenting peel series and clinical antioxidant infusion. Deep melanin dispersion with even luminous skin tone.',
+    disclaimer: 'Clinical photographic representation of results',
+    fitzpatrick: 'Fitzpatrick Type IV',
+    sessions: '3 Sessions',
+    parameter: 'Medical Depigmentation Protocol',
+  },
+  {
+    id: 'tattoo-removal',
+    category: 'Laser Tattoo Fading',
+    title: 'Picosecond Laser Dermal Pigment Clearance',
+    beforeImage:
+      'https://images.pexels.com/photos/7108227/pexels-photo-7108227.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    afterImage:
+      'https://images.pexels.com/photos/7108170/pexels-photo-7108170.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    caseNote:
+      'Targeted high-intensity picosecond Nd:YAG laser pulses shattering deep black ink particles into microscopic fragments cleared naturally via lymphatic drainage without dermal scarring.',
+    disclaimer: 'Clinical photographic representation of results',
+    fitzpatrick: 'Fitzpatrick Type III / IV',
+    sessions: '5 Sessions',
+    parameter: 'Picosecond Nd:YAG 1064nm Laser',
   },
 ];
 
@@ -290,7 +329,7 @@ export const testimonials: Testimonial[] = [
     treatment: 'Hydra Facial Glow',
     rating: 5,
     review:
-      'I have never seen my skin glow like this before. The hydra facial was so relaxing and the results were instant. Worth every rupee, especially with the anniversary discount!',
+      'I have never seen my skin glow like this before. The hydra facial was so relaxing and the results were instant. Worth every rupee, especially with the seasonal privilege deal!',
     avatar:
       'https://images.pexels.com/photos/1820575/pexels-photo-1820575.jpeg?auto=compress&cs=tinysrgb&w=200',
     verified: true,
@@ -331,10 +370,10 @@ export const testimonials: Testimonial[] = [
   {
     id: 't5',
     name: 'Nimra Asghar',
-    treatment: 'Clear Skin & Glow Bundle',
+    treatment: 'Clear Skin Protocol',
     rating: 5,
     review:
-      'The bundle was incredible value. I got multiple treatments at a fraction of the cost. My skin has completely transformed. The team genuinely cares about results.',
+      'The clinical protocol was incredible. My skin texture has completely transformed. The medical team genuinely cares about scientific results.',
     avatar:
       'https://images.pexels.com/photos/1820559/pexels-photo-1820559.jpeg?auto=compress&cs=tinysrgb&w=200',
     verified: true,
@@ -353,10 +392,10 @@ export const testimonials: Testimonial[] = [
 ];
 
 export const socialStats = [
-  { value: '490+', label: 'Patients Loved' },
-  { value: '73+', label: 'Google Reviews' },
-  { value: '2.5K+', label: 'Instagram Followers' },
-  { value: '4.9★', label: 'Average Rating' },
+  { value: '490+', label: 'Patients Loved', numericTarget: 490, suffix: '+' },
+  { value: '73+', label: 'Google Reviews', numericTarget: 73, suffix: '+' },
+  { value: '2.5K+', label: 'Instagram Community', numericTarget: 2.5, suffix: 'K+' },
+  { value: '4.9★', label: 'Average Rating', numericTarget: 4.9, suffix: '★' },
 ];
 
 // ----------------------------------------------------------------------- FAQs
@@ -381,15 +420,15 @@ export const faqs: Faq[] = [
   },
   {
     id: 'faq4',
-    question: 'How does the anniversary special discount work?',
+    question: 'How do the seasonal privilege discounts work?',
     answer:
-      'Our 1st Anniversary Special offers up to 70% OFF on select treatments and bundles. Simply book your appointment via WhatsApp and mention the anniversary deal. The discount is applied at the clinic. The offer is available for a limited time only.',
+      'Our Limited-Time Seasonal Privilege offers up to 50% OFF on select treatments. Simply book your appointment via WhatsApp and mention the seasonal privilege. The discount is applied at the clinic. The offer is available for a limited time only.',
   },
   {
     id: 'faq5',
     question: 'Do I need a consultation before booking a treatment?',
     answer:
-      'We highly recommend a consultation so our specialists can assess your skin or hair condition and recommend the best treatment plan. Consultations are free when you book via WhatsApp during the anniversary special period.',
+      'We highly recommend a consultation so our specialists can assess your skin or hair condition and recommend the best treatment plan. Consultations are free when you book via WhatsApp during the seasonal privilege period.',
   },
 ];
 
@@ -397,8 +436,127 @@ export const faqs: Faq[] = [
 export const navLinks = [
   { label: 'Treatments', href: '#treatments' },
   { label: 'Results', href: '#results' },
-  { label: 'Bundles', href: '#bundles' },
+  { label: 'Why Medical', href: '#why-medical' },
+  { label: 'Doctors', href: '#doctors' },
   { label: 'Reviews', href: '#reviews' },
   { label: 'Location', href: '#location' },
   { label: 'FAQ', href: '#faq' },
 ];
+
+export interface Doctor {
+  id: string;
+  name: string;
+  title: string;
+  credentials: string;
+  pmcReg: string;
+  experience: string;
+  portrait: string;
+  specialties: string[];
+}
+
+export const doctors: Doctor[] = [
+  {
+    id: 'dr-farrukh',
+    name: 'Dr. Farrukh Shahzad',
+    title: 'Lead Aesthetic Physician & Dermatologist',
+    credentials: 'MBBS, MCPS Dermatology, Certified Aesthetic Physician',
+    pmcReg: 'PMDC Verified: 89241-P',
+    experience: '12+ Years Clinical Experience',
+    portrait: 'https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=800',
+    specialties: ['Fractional Laser Resurfacing', 'GFC & Autologous PRP Therapy', 'Clinical Dermatology & Dermal Fillers'],
+  },
+  {
+    id: 'dr-amna',
+    name: 'Dr. Amna Farrukh',
+    title: 'Aesthetic Consultant & Laser Specialist',
+    credentials: 'MBBS, FCPS, Certified Aesthetic Medicine',
+    pmcReg: 'PMDC Verified: 91045-P',
+    experience: '10+ Years Clinical Experience',
+    portrait: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=800',
+    specialties: ['Hydra Facial Radiance Protocols', 'Medical Chemical Peels & Melasma', 'Non-Surgical Skin Rejuvenation'],
+  },
+];
+
+export interface QuizProtocol {
+  title: string;
+  price: number;
+  savings: string;
+  duration: string;
+  downtime: string;
+  message: string;
+}
+
+export const quizProtocols: Record<string, Record<string, QuizProtocol>> = {
+  'acne-scars': {
+    'zero-downtime': {
+      title: 'Dermal Micro-Needling & Soothing Protocol',
+      price: 9000,
+      savings: 'Save 40%',
+      duration: '45 min',
+      downtime: 'Mild redness (few hours)',
+      message: 'I want to claim the Dermal Micro-Needling Acne Scar Protocol (Price: Rs. 9,000). My skin is sensitive.',
+    },
+    'intensive': {
+      title: '1540nm Fractional Laser Resurfacing',
+      price: 12000,
+      savings: 'Save 50%',
+      duration: '60 min',
+      downtime: '2-3 days peeling',
+      message: 'I want to claim the 1540nm Fractional Laser Acne Scar Protocol (Price: Rs. 12,000). My skin is normal/tolerant.',
+    },
+  },
+  'hair-thinning': {
+    'zero-downtime': {
+      title: 'PRP Scalp Revive & Oxygenation',
+      price: 8000,
+      savings: 'Save 45%',
+      duration: '50 min',
+      downtime: 'No downtime',
+      message: 'I want to claim the PRP Scalp Revive Hair Protocol (Price: Rs. 8,000). My scalp is sensitive.',
+    },
+    'intensive': {
+      title: 'GFC Dual Action Density Restore',
+      price: 15000,
+      savings: 'Save 50%',
+      duration: '75 min',
+      downtime: 'No downtime (mild soreness)',
+      message: 'I want to claim the GFC Dual Action Density Restore Protocol (Price: Rs. 15,000). My scalp is normal/tolerant.',
+    },
+  },
+  'pigmentation': {
+    'zero-downtime': {
+      title: 'Signature Hydra Facial Glow Dual Action',
+      price: 6000,
+      savings: 'Save 60%',
+      duration: '60 min',
+      downtime: 'Zero downtime',
+      message: 'I want to claim the Signature Hydra Facial Glow Pigmentation Protocol (Price: Rs. 6,000). My skin is sensitive.',
+    },
+    'intensive': {
+      title: 'Medical TCA Pigmentation Peel',
+      price: 7000,
+      savings: 'Save 60%',
+      duration: '45 min',
+      downtime: '3-5 days skin peeling',
+      message: 'I want to claim the Medical TCA Pigmentation Peel Protocol (Price: Rs. 7,000). My skin is normal/tolerant.',
+    },
+  },
+  'anti-aging': {
+    'zero-downtime': {
+      title: 'Exosome Facial Infusion & Lift',
+      price: 18000,
+      savings: 'Save 30%',
+      duration: '60 min',
+      downtime: 'No downtime',
+      message: 'I want to claim the Exosome Facial Lift Anti-Aging Protocol (Price: Rs. 18,000). My skin is sensitive.',
+    },
+    'intensive': {
+      title: 'Full Face RF Collagen Resurfacing',
+      price: 25000,
+      savings: 'Save 40%',
+      duration: '90 min',
+      downtime: '1-2 days mild swelling',
+      message: 'I want to claim the RF Collagen Resurfacing Anti-Aging Protocol (Price: Rs. 25,000). My skin is normal/tolerant.',
+    },
+  },
+};

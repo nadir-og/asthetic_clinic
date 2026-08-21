@@ -15,16 +15,16 @@ export default function Bundles() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10 lg:mb-14"
         >
-          <div className="inline-flex items-center gap-2 rounded-full glass-card px-4 py-1.5 mb-4">
-            <Zap className="h-3.5 w-3.5 text-gold" />
-            <span className="text-xs font-semibold text-slate-600 uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 rounded-full bg-zinc-100 border border-zinc-200 px-4 py-1.5 mb-4">
+            <Zap className="h-3.5 w-3.5 text-zinc-950" />
+            <span className="text-xs font-semibold text-zinc-700 uppercase tracking-wider">
               Limited-Time Flash Offers
             </span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-deep mb-3">
-            Anniversary <span className="text-gold-gradient">Bundle Deals</span>
+          <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-950 text-center mb-4">
+            Signature Bundle Deals
           </h2>
-          <p className="text-base text-slate-500 max-w-2xl mx-auto">
+          <p className="text-sm lg:text-base text-zinc-500 max-w-xl mx-auto text-center mb-12">
             Save more with curated treatment bundles. All offers end soon — claim via WhatsApp.
           </p>
         </motion.div>
@@ -42,16 +42,15 @@ export default function Bundles() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ y: -6 }}
-                className={`relative flex flex-col rounded-3xl p-6 lg:p-8 transition-shadow ${
+                className={`relative flex flex-col rounded-3xl p-6 lg:p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-zinc-300 ${
                   bundle.bestValue
-                    ? 'glass-card border-2 border-gold shadow-gold-glow lg:scale-105 lg:-my-2'
-                    : 'glass-card hover:shadow-glass-hover'
+                    ? 'border-2 border-zinc-950 bg-white shadow-lg lg:scale-105 lg:-my-2 z-10'
+                    : 'bg-white/90 backdrop-blur-md border border-zinc-200 shadow-sm'
                 }`}
               >
                 {/* Best Seller ribbon */}
                 {bundle.bestValue && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-gradient-to-r from-gold to-champagne-deep px-4 py-1.5 text-xs font-bold text-white shadow-lg whitespace-nowrap">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-zinc-950 px-4 py-1.5 text-xs font-bold text-white shadow-lg whitespace-nowrap">
                     <Crown className="h-3.5 w-3.5" />
                     Best Seller
                   </div>
@@ -60,30 +59,26 @@ export default function Bundles() {
                 {/* Badge */}
                 <div className="flex items-center justify-between mb-4">
                   <span
-                    className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider ${
-                      bundle.bestValue
-                        ? 'bg-gold/15 text-gold-deep'
-                        : 'bg-emerald-mid/10 text-emerald-deep'
-                    }`}
+                    className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider border bg-zinc-100 text-zinc-800 border-zinc-200`}
                   >
                     {bundle.badge}
                   </span>
-                  <span className="text-xs font-bold text-emerald-mid">
+                  <span className="text-xs font-bold text-zinc-950">
                     {discount}% OFF
                   </span>
                 </div>
 
                 {/* Name */}
-                <h3 className="font-serif text-2xl font-bold text-slate-deep mb-1">
+                <h3 className="text-2xl font-bold text-zinc-950 mb-1">
                   {bundle.name}
                 </h3>
 
                 {/* Price */}
                 <div className="flex items-baseline gap-2 mb-6 mt-2">
-                  <span className="text-3xl font-bold text-emerald-deep">
+                  <span className="text-3xl font-bold text-zinc-950">
                     Rs. {bundle.price.toLocaleString()}
                   </span>
-                  <span className="text-sm text-slate-400 line-through">
+                  <span className="text-stone-400 line-through text-sm">
                     Rs. {bundle.originalPrice.toLocaleString()}
                   </span>
                 </div>
@@ -91,9 +86,9 @@ export default function Bundles() {
                 {/* Treatments list */}
                 <ul className="flex flex-col gap-2.5 mb-6 flex-1">
                   {bundle.treatments.map((t) => (
-                    <li key={t} className="flex items-start gap-2.5 text-sm text-slate-600">
-                      <div className="flex items-center justify-center h-5 w-5 rounded-full bg-emerald-mid/10 flex-shrink-0 mt-0.5">
-                        <Check className="h-3 w-3 text-emerald-mid" />
+                    <li key={t} className="flex items-start gap-2.5 text-sm text-zinc-650">
+                      <div className="flex items-center justify-center h-5 w-5 rounded-full bg-zinc-100 border border-zinc-200 flex-shrink-0 mt-0.5">
+                        <Check className="h-3 w-3 text-zinc-900" />
                       </div>
                       {t}
                     </li>
@@ -105,13 +100,9 @@ export default function Bundles() {
                   href={waBundleLink(bundle.name, bundle.price)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`whatsapp-shimmer relative flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold text-white transition-all ${
-                    bundle.bestValue
-                      ? 'bg-gradient-to-r from-[#25D366] to-[#128C7E] shadow-whatsapp-glow animate-pulse-glow'
-                      : 'bg-gradient-to-r from-emerald-mid to-emerald-deep hover:shadow-emerald-glow'
-                  }`}
+                  className="bg-zinc-950 hover:bg-zinc-800 text-white font-medium px-6 py-3.5 rounded-full shadow-md transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 w-full mt-auto"
                 >
-                  <MessageCircle className="h-4 w-4 fill-white/20" />
+                  <MessageCircle className="h-4 w-4 fill-white/10" />
                   Claim Bundle Deal
                 </a>
               </motion.div>
@@ -128,10 +119,10 @@ export default function Bundles() {
         >
           <div className="flex items-center gap-0.5">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="h-4 w-4 fill-gold text-gold" />
+              <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
             ))}
           </div>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-slate-600">
             Loved by 490+ patients · 73+ Google reviews
           </p>
         </motion.div>

@@ -5,25 +5,26 @@ export default {
     extend: {
       colors: {
         emerald: {
-          deep: '#064e3b',
-          mid: '#047857',
-          light: '#10b981',
-          glow: '#34d399',
+          deep: '#04140e',  // Obsidian forest emerald
+          mid: '#00A86B',   // Radiant emerald
+          light: '#0D5C46',
+          glow: '#10B981',
+          glass: '#0a261c', // High-spec glass
         },
         slate: {
-          deep: '#0f172a',
-          mid: '#1e293b',
+          deep: '#ffffff', // Crisp luxury white
+          mid: '#cbd5e1',  // High-contrast soft gray
         },
         champagne: {
-          light: '#f5e6c8',
-          DEFAULT: '#e8c98a',
-          deep: '#d4af6a',
-          glow: '#f0d9a0',
+          light: '#F8E8C9',
+          DEFAULT: '#E5C378',
+          deep: '#D4AF37',
+          glow: '#FDF0D5',
         },
         gold: {
-          light: '#fdf0c2',
-          DEFAULT: '#e6c168',
-          deep: '#c9a14a',
+          light: '#F8E8C9',
+          DEFAULT: '#D4AF37',
+          deep: '#C59B27',
         },
       },
       fontFamily: {

@@ -2,7 +2,7 @@ import { clinic } from '@/data/clinicData';
 
 /**
  * Builds a WhatsApp deep link with a pre-filled, URL-encoded message.
- * Usage: waLink('I want to claim the Anniversary Special Deal')
+ * Usage: waLink('I want to claim the Seasonal Privilege Deal')
  */
 export function waLink(message: string): string {
   const encoded = encodeURIComponent(
@@ -11,15 +11,15 @@ export function waLink(message: string): string {
   return `https://wa.me/${clinic.whatsappNumber}?text=${encoded}`;
 }
 
-/** Convenience link for the generic anniversary deal CTA. */
-export function waAnniversaryLink(): string {
-  return waLink('I want to claim the Anniversary Special Deal!');
+/** Convenience link for the generic privilege deal CTA. */
+export function waPrivilegeLink(): string {
+  return waLink('I want to claim the Seasonal Privilege Deal!');
 }
 
 /** Convenience link for a specific service. */
 export function waServiceLink(serviceTitle: string, salePrice: number): string {
   return waLink(
-    `I'm interested in the "${serviceTitle}" treatment (Anniversary price: Rs. ${salePrice.toLocaleString()}). Please share available slots.`
+    `I'm interested in the "${serviceTitle}" treatment (Special price: Rs. ${salePrice.toLocaleString()}). Please share available slots.`
   );
 }
 

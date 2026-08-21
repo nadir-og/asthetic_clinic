@@ -3,6 +3,36 @@ import { MapPin, Clock, Phone, Navigation, ExternalLink } from 'lucide-react';
 import { clinic } from '@/data/clinicData';
 import { telLink, mapsLink, mapsEmbedUrl } from '@/lib/whatsapp';
 
+function isClinicOpen(): { isOpen: boolean; text: string } {
+  const now = new Date();
+  const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+
+  if (day === 0) {
+    return { isOpen: false, text: 'Closed Now · Opens Mon 1:00 PM' };
+  }
+
+  // Hours: 1:00 PM – 9:00 PM (13:00 to 21:00)
+  const currentMinutes = hours * 60 + minutes;
+  const openMinutes = 13 * 60; // 13:00
+  const closeMinutes = 21 * 60; // 21:00
+
+  if (currentMinutes >= openMinutes && currentMinutes < closeMinutes) {
+    return { isOpen: true, text: 'Open Now · Closes at 9:00 PM' };
+  } else {
+    if (currentMinutes < openMinutes) {
+      return { isOpen: false, text: 'Closed Now · Opens at 1:00 PM' };
+    } else {
+      const isSat = day === 6;
+      return {
+        isOpen: false,
+        text: isSat ? 'Closed Now · Opens Mon 1:00 PM' : 'Closed Now · Opens tomorrow at 1:00 PM',
+      };
+    }
+  }
+}
+
 export default function Location() {
   return (
     <section id="location" className="relative py-16 lg:py-24">
@@ -15,17 +45,17 @@ export default function Location() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10 lg:mb-14"
         >
-          <div className="inline-flex items-center gap-2 rounded-full glass-card px-4 py-1.5 mb-4">
-            <MapPin className="h-3.5 w-3.5 text-gold" />
-            <span className="text-xs font-semibold text-slate-600 uppercase tracking-wider">
-              Visit Us
+          <div className="inline-flex items-center gap-2 rounded-full bg-zinc-100 border border-zinc-200 px-4 py-1.5 mb-4 shadow-sm">
+            <MapPin className="h-3.5 w-3.5 text-zinc-950" />
+            <span className="text-xs font-semibold text-zinc-700 uppercase tracking-wider">
+              Prime Medical Location
             </span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-deep mb-3">
-            Clinic <span className="text-gold-gradient">Location</span>
+          <h2 className="font-serif text-3xl lg:text-5xl font-bold tracking-tight text-zinc-950 text-center mb-4">
+            Clinic Location & Hours
           </h2>
-          <p className="text-base text-slate-500 max-w-2xl mx-auto">
-            Find us in the heart of {clinic.city}. Walk-ins welcome, or book via WhatsApp.
+          <p className="text-sm lg:text-base text-zinc-600 max-w-xl mx-auto text-center mb-12">
+            Visit us in {clinic.city}. Valet parking and private consultation suites available.
           </p>
         </motion.div>
 
@@ -37,7 +67,7 @@ export default function Location() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="relative rounded-3xl overflow-hidden glass-card p-2 shadow-lg"
+            className="relative rounded-3xl overflow-hidden bg-white border border-zinc-200 p-2 shadow-sm"
           >
             <div className="relative w-full h-full min-h-[320px] sm:min-h-[400px] rounded-2xl overflow-hidden">
               <iframe
@@ -57,61 +87,81 @@ export default function Location() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col gap-5"
+            className="flex flex-col gap-5 justify-between"
           >
-            {/* Address */}
-            <div className="glass-card rounded-3xl p-6 lg:p-8">
-              <div className="flex items-start gap-4">
-                <div className="flex items-center justify-center h-11 w-11 rounded-2xl bg-emerald-mid/10 flex-shrink-0">
-                  <MapPin className="h-5 w-5 text-emerald-mid" />
+            <div className="space-y-5">
+              {/* Address */}
+              <motion.div
+                whileHover={{ y: -4 }}
+                className="bg-white border border-zinc-200/90 rounded-3xl p-6 lg:p-7 shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-2xl bg-zinc-100 flex-shrink-0">
+                    <MapPin className="h-5 w-5 text-zinc-950" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-lg font-bold text-zinc-950 mb-1">
+                      Our Multan Clinic
+                    </h3>
+                    <p className="text-sm text-zinc-600 leading-relaxed font-medium">
+                      {clinic.name}
+                      <br />
+                      {clinic.address}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-serif text-lg font-bold text-slate-deep mb-1">
-                    Our Address
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    {clinic.name}
-                    <br />
-                    {clinic.address}
-                  </p>
+              </motion.div>
+
+              {/* Hours */}
+              <motion.div
+                whileHover={{ y: -4 }}
+                className="bg-white border border-zinc-200/90 rounded-3xl p-6 lg:p-7 shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-2xl bg-zinc-100 flex-shrink-0">
+                    <Clock className="h-5 w-5 text-zinc-950" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2.5 mb-1.5 flex-wrap">
+                      <h3 className="font-serif text-lg font-bold text-zinc-950">
+                        Consultation Timings
+                      </h3>
+                      <div className={`flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold border transition-all ${
+                        isClinicOpen().isOpen 
+                          ? 'bg-emerald-50 border-emerald-200 text-emerald-800' 
+                          : 'bg-red-50 border-red-200 text-red-800'
+                      }`}>
+                        <span className={`h-1.5 w-1.5 rounded-full ${
+                          isClinicOpen().isOpen ? 'bg-emerald-600 animate-pulse' : 'bg-red-500'
+                        }`} />
+                        <span>{isClinicOpen().isOpen ? 'Open Now' : 'Closed'}</span>
+                      </div>
+                    </div>
+                    <p className="text-sm text-zinc-700 font-medium leading-relaxed">{clinic.timings}</p>
+                    <p className="text-xs text-zinc-500 mt-1">{isClinicOpen().text}</p>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
-            {/* Hours */}
-            <div className="glass-card rounded-3xl p-6 lg:p-8">
-              <div className="flex items-start gap-4">
-                <div className="flex items-center justify-center h-11 w-11 rounded-2xl bg-gold/15 flex-shrink-0">
-                  <Clock className="h-5 w-5 text-gold-deep" />
-                </div>
-                <div>
-                  <h3 className="font-serif text-lg font-bold text-slate-deep mb-1">
-                    Opening Hours
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{clinic.timings}</p>
-                  <p className="text-xs text-slate-400 mt-1">Closed on Sundays</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3">
+            {/* Inverting Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <a
                 href={telLink()}
-                className="flex items-center justify-center gap-2 rounded-full glass-card px-5 py-3.5 text-sm font-semibold text-slate-deep hover:shadow-glass-hover transition-all"
+                className="bg-white text-zinc-900 border border-zinc-200 font-medium px-8 py-3.5 rounded-full shadow-sm transition-all duration-300 hover:bg-zinc-950 hover:text-white hover:border-zinc-950 hover:shadow-md flex items-center justify-center gap-2 flex-1 text-sm"
               >
-                <Phone className="h-4 w-4 text-emerald-mid" />
-                Call Reception
+                <Phone className="h-4 w-4" />
+                <span>Call Reception</span>
               </a>
               <a
                 href={mapsLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-mid to-emerald-deep px-5 py-3.5 text-sm font-semibold text-white shadow-emerald-glow hover:scale-105 transition-transform"
+                className="bg-zinc-950 text-white border-2 border-zinc-950 font-medium px-8 py-3.5 rounded-full shadow-md transition-all duration-300 hover:bg-white hover:text-zinc-950 hover:shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center gap-2 flex-1 text-sm"
               >
                 <Navigation className="h-4 w-4" />
-                Open in Google Maps
-                <ExternalLink className="h-3 w-3 opacity-60" />
+                <span>Open in Google Maps</span>
+                <ExternalLink className="h-3.5 w-3.5 opacity-80" />
               </a>
             </div>
           </motion.div>

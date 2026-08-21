@@ -18,16 +18,16 @@ export default function FAQ() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10 lg:mb-14"
         >
-          <div className="inline-flex items-center gap-2 rounded-full glass-card px-4 py-1.5 mb-4">
-            <HelpCircle className="h-3.5 w-3.5 text-gold" />
-            <span className="text-xs font-semibold text-slate-600 uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 rounded-full bg-zinc-100 border border-zinc-200 px-4 py-1.5 mb-4 mx-auto">
+            <HelpCircle className="h-3.5 w-3.5 text-zinc-950" />
+            <span className="text-xs font-semibold text-zinc-700 uppercase tracking-wider">
               Frequently Asked
             </span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-deep mb-3">
-            Questions? <span className="text-gold-gradient">Answered.</span>
+          <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-zinc-950 text-center mb-4">
+            Questions? Answered.
           </h2>
-          <p className="text-base text-slate-500">
+          <p className="text-sm lg:text-base text-zinc-500 max-w-xl mx-auto text-center">
             Everything you need to know before booking your treatment.
           </p>
         </motion.div>
@@ -39,26 +39,28 @@ export default function FAQ() {
             return (
               <motion.div
                 key={faq.id}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className={`glass-card rounded-2xl overflow-hidden transition-shadow ${
-                  isOpen ? 'shadow-glass-hover' : ''
+                transition={{ duration: 0.4, delay: idx * 0.06 }}
+                className={`bg-white border rounded-2xl overflow-hidden transition-all duration-300 shadow-sm ${
+                  isOpen ? 'border-zinc-300 shadow-md' : 'border-zinc-200 hover:border-zinc-300'
                 }`}
               >
                 <button
                   onClick={() => setOpenId(isOpen ? null : faq.id)}
                   className="flex w-full items-center justify-between gap-4 p-5 text-left"
                 >
-                  <span className="font-serif text-base sm:text-lg font-semibold text-slate-deep">
+                  <span className="text-zinc-900 font-medium text-base sm:text-lg">
                     {faq.question}
                   </span>
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
-                    className={`flex items-center justify-center h-8 w-8 rounded-full flex-shrink-0 ${
-                      isOpen ? 'bg-emerald-mid text-white' : 'bg-emerald-mid/10 text-emerald-mid'
+                    className={`flex items-center justify-center h-8 w-8 rounded-full flex-shrink-0 border transition-colors duration-200 ${
+                      isOpen
+                        ? 'bg-zinc-950 text-white border-zinc-950'
+                        : 'bg-zinc-100 text-zinc-800 border-zinc-200'
                     }`}
                   >
                     <ChevronDown className="h-4 w-4" />
@@ -74,7 +76,7 @@ export default function FAQ() {
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <p className="px-5 pb-5 text-sm text-slate-600 leading-relaxed">
+                      <p className="px-5 pb-5 pt-1 text-sm text-zinc-600 leading-relaxed border-t border-zinc-100">
                         {faq.answer}
                       </p>
                     </motion.div>
@@ -97,9 +99,9 @@ export default function FAQ() {
             href={waQuestionLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="whatsapp-shimmer relative flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-[#25D366] to-[#128C7E] px-6 py-4 text-base font-semibold text-white shadow-whatsapp-glow animate-pulse-glow hover:scale-[1.02] transition-transform"
+            className="bg-zinc-950 hover:bg-zinc-800 text-white font-medium px-6 py-3.5 rounded-full shadow-md transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2.5"
           >
-            <MessageCircle className="h-5 w-5 fill-white/20" />
+            <MessageCircle className="h-5 w-5 fill-white/10" />
             Still have questions? Chat on WhatsApp
           </a>
         </motion.div>

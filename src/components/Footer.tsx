@@ -1,17 +1,17 @@
 import { motion } from 'framer-motion';
 import { Phone, MapPin, Clock, MessageCircle, Instagram, Heart } from 'lucide-react';
 import { clinic, navLinks } from '@/data/clinicData';
-import { waAnniversaryLink, telLink, mapsLink } from '@/lib/whatsapp';
+import { waPrivilegeLink, telLink, mapsLink } from '@/lib/whatsapp';
 
 export default function Footer() {
   return (
     <footer className="relative mt-8 overflow-hidden">
-      {/* Deep emerald/black background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-deep via-emerald-deep to-slate-deep" />
+      {/* Deep zinc-950 background */}
+      <div className="absolute inset-0 bg-zinc-950 border-t border-zinc-900" />
 
       {/* Subtle orbs */}
-      <div className="absolute -top-20 -left-20 h-60 w-60 rounded-full bg-emerald-light/10 blur-3xl" />
-      <div className="absolute -bottom-20 -right-20 h-60 w-60 rounded-full bg-gold/10 blur-3xl" />
+      <div className="absolute -top-20 -left-20 h-60 w-60 rounded-full bg-zinc-800/10 blur-3xl" />
+      <div className="absolute -bottom-20 -right-20 h-60 w-60 rounded-full bg-zinc-900/5 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-14 lg:py-20">
         <div className="grid gap-10 lg:grid-cols-4">
@@ -24,33 +24,32 @@ export default function Footer() {
             className="lg:col-span-2"
           >
             <div className="flex items-center gap-3 mb-4">
-              <div className="relative h-12 w-12 rounded-xl bg-gradient-to-br from-emerald-light to-emerald-mid flex items-center justify-center shadow-emerald-glow">
-                <span className="font-serif text-2xl font-bold text-champagne-light">E</span>
-                <div className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-gold animate-pulse-glow" />
+              <div className="relative h-12 w-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center">
+                <span className="font-serif text-2xl font-bold text-white">E</span>
+                <div className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-emerald-500" />
               </div>
               <div>
                 <p className="font-serif text-xl font-bold text-white">
                   {clinic.name}
                 </p>
-                <p className="text-xs uppercase tracking-[0.15em] text-champagne-light/70 font-semibold">
+                <p className="text-xs uppercase tracking-[0.15em] text-zinc-400 font-semibold">
                   Aesthetics & Health Care
                 </p>
               </div>
             </div>
-            <p className="text-sm text-white/60 leading-relaxed max-w-md mb-6">
+            <p className="text-sm text-stone-300 leading-relaxed max-w-md mb-6">
               {clinic.tagline}. Located in {clinic.city}, delivering world-class
               aesthetic treatments with specialist doctors and FDA-cleared technology.
             </p>
 
-            {/* WhatsApp CTA */}
             <a
-              href={waAnniversaryLink()}
+              href={waPrivilegeLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="whatsapp-shimmer relative inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#25D366] to-[#128C7E] px-5 py-3 text-sm font-semibold text-white shadow-whatsapp-glow animate-pulse-glow hover:scale-105 transition-transform"
+              className="bg-white text-zinc-950 border-2 border-white font-medium px-8 py-3.5 rounded-full shadow-md transition-all duration-300 hover:bg-zinc-950 hover:text-white hover:border-white hover:shadow-xl hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 text-sm"
             >
-              <MessageCircle className="h-4 w-4 fill-white/20" />
-              Book via WhatsApp
+              <MessageCircle className="h-4 w-4 fill-current opacity-80" />
+              <span>Book via WhatsApp</span>
             </a>
           </motion.div>
 
@@ -61,7 +60,7 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
+            <h3 className="font-serif text-base font-bold text-white uppercase tracking-wider mb-4">
               Quick Links
             </h3>
             <ul className="flex flex-col gap-2.5">
@@ -69,7 +68,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-white/60 hover:text-champagne-light transition-colors"
+                    className="text-sm text-stone-300 hover:text-white transition-colors"
                   >
                     {link.label}
                   </a>
@@ -85,16 +84,16 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
-              Contact
+            <h3 className="font-serif text-base font-bold text-white uppercase tracking-wider mb-4">
+              Contact Us
             </h3>
             <ul className="flex flex-col gap-3">
               <li>
                 <a
                   href={telLink()}
-                  className="flex items-start gap-2.5 text-sm text-white/60 hover:text-champagne-light transition-colors"
+                  className="flex items-start gap-2.5 text-sm text-stone-300 hover:text-white transition-colors"
                 >
-                  <Phone className="h-4 w-4 text-emerald-light flex-shrink-0 mt-0.5" />
+                  <Phone className="h-4 w-4 text-zinc-400 flex-shrink-0 mt-0.5" />
                   {clinic.phone}
                 </a>
               </li>
@@ -103,22 +102,22 @@ export default function Footer() {
                   href={mapsLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-2.5 text-sm text-white/60 hover:text-champagne-light transition-colors"
+                  className="flex items-start gap-2.5 text-sm text-stone-300 hover:text-white transition-colors"
                 >
-                  <MapPin className="h-4 w-4 text-emerald-light flex-shrink-0 mt-0.5" />
+                  <MapPin className="h-4 w-4 text-zinc-400 flex-shrink-0 mt-0.5" />
                   {clinic.address}
                 </a>
               </li>
-              <li className="flex items-start gap-2.5 text-sm text-white/60">
-                <Clock className="h-4 w-4 text-emerald-light flex-shrink-0 mt-0.5" />
+              <li className="flex items-start gap-2.5 text-sm text-stone-300">
+                <Clock className="h-4 w-4 text-zinc-400 flex-shrink-0 mt-0.5" />
                 {clinic.timings}
               </li>
               <li>
                 <a
                   href="#"
-                  className="flex items-start gap-2.5 text-sm text-white/60 hover:text-champagne-light transition-colors"
+                  className="flex items-start gap-2.5 text-sm text-stone-300 hover:text-white transition-colors"
                 >
-                  <Instagram className="h-4 w-4 text-emerald-light flex-shrink-0 mt-0.5" />
+                  <Instagram className="h-4 w-4 text-zinc-400 flex-shrink-0 mt-0.5" />
                   @elixir.aesthetics
                 </a>
               </li>
@@ -127,17 +126,17 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="mt-12 pt-6 border-t border-white/10">
+        <div className="mt-12 pt-6 border-t border-zinc-800">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p className="text-xs text-white/40 text-center sm:text-left">
+            <p className="text-xs text-stone-400 text-center sm:text-left">
               © {new Date().getFullYear()} {clinic.name}. All rights reserved.
             </p>
-            <p className="text-xs text-white/40 flex items-center gap-1.5">
-              <Heart className="h-3 w-3 text-gold/60" />
+            <p className="text-xs text-stone-400 flex items-center gap-1.5">
+              <Heart className="h-3 w-3 text-zinc-400" />
               Crafted with care for {clinic.city}.
             </p>
           </div>
-          <p className="text-[10px] text-white/30 mt-3 text-center sm:text-left max-w-3xl">
+          <p className="text-[10px] text-stone-500 mt-3 text-center sm:text-left max-w-3xl leading-relaxed">
             Disclaimer: Results may vary per individual. All treatments are performed by
             qualified dermatologists. This website is for informational purposes and does
             not constitute medical advice. Please consult our specialists for a personalised
