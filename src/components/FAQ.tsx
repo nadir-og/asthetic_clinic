@@ -99,10 +99,11 @@ export default function FAQ() {
             href={waQuestionLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-zinc-950 hover:bg-zinc-800 text-white font-medium px-6 py-3.5 rounded-full shadow-md transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2.5"
+            className="relative overflow-hidden bg-zinc-950 text-white font-medium px-6 py-3.5 rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5 group"
           >
-            <MessageCircle className="h-5 w-5 fill-white/10" />
-            Still have questions? Chat on WhatsApp
+            <span className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-[400%] transition-transform duration-1000 ease-in-out"></span>
+            <MessageCircle className="h-5 w-5 fill-white/10 relative z-10" />
+            <span className="relative z-10">Still have questions? Chat on WhatsApp</span>
           </a>
         </motion.div>
       </div>

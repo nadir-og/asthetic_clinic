@@ -100,10 +100,11 @@ export default function Bundles() {
                   href={waBundleLink(bundle.name, bundle.price)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-zinc-950 hover:bg-zinc-800 text-white font-medium px-6 py-3.5 rounded-full shadow-md transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 w-full mt-auto"
+                  className="relative overflow-hidden bg-zinc-950 text-white font-medium px-6 py-3.5 rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 w-full mt-auto group"
                 >
-                  <MessageCircle className="h-4 w-4 fill-white/10" />
-                  Claim Bundle Deal
+                  <span className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-[400%] transition-transform duration-1000 ease-in-out"></span>
+                  <MessageCircle className="h-4 w-4 fill-white/10 relative z-10" />
+                  <span className="relative z-10">Claim Bundle Deal</span>
                 </a>
               </motion.div>
             );

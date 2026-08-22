@@ -31,11 +31,11 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-[#FDFCFB] text-zinc-900 min-h-screen relative overflow-x-hidden">
+    <div className="bg-[#FDFCFB] text-zinc-900 min-h-screen relative overflow-x-hidden w-full">
       <AmbientBackground />
       <AnnouncementBar />
       <Navbar />
-      <main>
+      <main className="w-full overflow-x-hidden">
         <Hero />
         <Doctors />
         <Treatments />
@@ -48,23 +48,23 @@ function App() {
       <Footer />
 
       {/* Floating Interactive WhatsApp Pop-Up Widget */}
-      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
-        {/* Animated Message Bubble */}
+      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-3">
+        {/* Gentle Floating Notification Pill on Desktop */}
         <a
           href={waPrivilegeLink()}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden sm:flex items-center gap-2 bg-white text-zinc-900 border border-zinc-200 shadow-xl px-4 py-2.5 rounded-full text-xs font-semibold hover:bg-zinc-950 hover:text-white transition-all duration-300 hover:scale-105 active:scale-95"
+          className="hidden md:flex items-center gap-2 bg-white text-zinc-900 border border-stone-200/90 shadow-xl px-4 py-2.5 rounded-full text-xs font-semibold hover:border-zinc-950 transition-all duration-300 hover:scale-105 active:scale-95"
         >
-          <span>💬 Book on WhatsApp (Fast Reply)</span>
+          <span>💬 Direct Doctor Consultation</span>
         </a>
 
-        {/* Green WhatsApp Button */}
+        {/* Green WhatsApp Button with Continuous Subtle Breathing Ping */}
         <a
           href={waPrivilegeLink()}
           target="_blank"
           rel="noopener noreferrer"
-          className="relative bg-[#25D366] hover:bg-[#20bd5a] text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center"
+          className="relative bg-[#25D366] text-white p-3.5 md:p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center min-w-[44px] min-h-[44px] md:min-w-[48px] md:min-h-[48px]"
           aria-label="Chat on WhatsApp"
         >
           <span className="absolute -inset-1 rounded-full bg-[#25D366] opacity-40 animate-ping pointer-events-none" />

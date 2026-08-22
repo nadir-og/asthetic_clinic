@@ -60,6 +60,21 @@ export default function BeforeAfter() {
     }
   };
 
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    isDragging.current = true;
+    updateSlider(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (isDragging.current) {
+      updateSlider(e.touches[0].clientX);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    isDragging.current = false;
+  };
+
   return (
     <section id="results" className="relative py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -129,6 +144,10 @@ export default function BeforeAfter() {
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}
               onPointerCancel={handlePointerUp}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onTouchCancel={handleTouchEnd}
             >
               {/* After image (background) */}
               <img

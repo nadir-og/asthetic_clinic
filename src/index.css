@@ -20,6 +20,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -27,6 +29,7 @@ body {
   background-color: #FAFAFA;
   color: #18181b; /* text-zinc-900 */
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 .font-serif {

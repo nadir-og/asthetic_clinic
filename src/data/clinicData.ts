@@ -263,10 +263,8 @@ export const beforeAfterCases: BeforeAfterCase[] = [
     id: 'hair-density',
     category: 'Hair Density',
     title: 'Crown & Hairline Follicular Density Restoration',
-    beforeImage:
-      'https://images.pexels.com/photos/3998419/pexels-photo-3998419.jpeg?auto=compress&cs=tinysrgb&w=1000',
-    afterImage:
-      'https://images.pexels.com/photos/3992875/pexels-photo-3992875.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    beforeImage: '/images/hair_before.jpg',
+    afterImage: '/images/hair_after.jpg',
     caseNote:
       'Male patient presenting with diffuse crown thinning and receding frontal hairline. Underwent 6 sessions of GFC + Autologous PRP protocol over 14 weeks. High follicular density restoration observed with zero surgical downtime.',
     disclaimer: 'Clinical photographic documentation of patient response at 14 weeks',
@@ -278,10 +276,8 @@ export const beforeAfterCases: BeforeAfterCase[] = [
     id: 'acne-scar',
     category: 'Acne Scars & Texture',
     title: 'Deep Rolling Acne Scar & Texture Resurfacing',
-    beforeImage:
-      'https://images.pexels.com/photos/3762771/pexels-photo-3762771.jpeg?auto=compress&cs=tinysrgb&w=1000',
-    afterImage:
-      'https://images.pexels.com/photos/3762761/pexels-photo-3762761.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    beforeImage: '/images/acne_before.jpg',
+    afterImage: '/images/acne_after.jpg',
     caseNote:
       'Close-up bilateral cheek profile with active erythema and grade-3 atrophic rolling acne scars. Treated with 4 sessions of Fractional Erbium-Glass Laser combined with cross-linked HA hydration. 78% depth reduction with radiant glass skin outcome.',
     disclaimer: 'Clinical photographic documentation under uniform medical lighting',
@@ -293,10 +289,8 @@ export const beforeAfterCases: BeforeAfterCase[] = [
     id: 'skin-radiance',
     category: 'Pigmentation & Melasma',
     title: 'Dermal Melasma & Epidermal Tone Harmonization',
-    beforeImage:
-      'https://images.pexels.com/photos/3762871/pexels-photo-3762871.jpeg?auto=compress&cs=tinysrgb&w=1000',
-    afterImage:
-      'https://images.pexels.com/photos/3762461/pexels-photo-3762461.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    beforeImage: '/images/skin_before.jpg',
+    afterImage: '/images/skin_after.jpg',
     caseNote:
       'Patient treated with dermatologist-formulated medical TCA depigmenting peel series and clinical antioxidant infusion. Deep melanin dispersion with even luminous skin tone.',
     disclaimer: 'Clinical photographic representation of results',
@@ -308,10 +302,8 @@ export const beforeAfterCases: BeforeAfterCase[] = [
     id: 'tattoo-removal',
     category: 'Laser Tattoo Fading',
     title: 'Picosecond Laser Dermal Pigment Clearance',
-    beforeImage:
-      'https://images.pexels.com/photos/7108227/pexels-photo-7108227.jpeg?auto=compress&cs=tinysrgb&w=1000',
-    afterImage:
-      'https://images.pexels.com/photos/7108170/pexels-photo-7108170.jpeg?auto=compress&cs=tinysrgb&w=1000',
+    beforeImage: '/images/tattoo_before.jpg',
+    afterImage: '/images/tattoo_after.jpg',
     caseNote:
       'Targeted high-intensity picosecond Nd:YAG laser pulses shattering deep black ink particles into microscopic fragments cleared naturally via lymphatic drainage without dermal scarring.',
     disclaimer: 'Clinical photographic representation of results',
@@ -462,7 +454,7 @@ export const doctors: Doctor[] = [
     credentials: 'MBBS, MCPS Dermatology, Certified Aesthetic Physician',
     pmcReg: 'PMDC Verified: 89241-P',
     experience: '12+ Years Clinical Experience',
-    portrait: 'https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=800',
+    portrait: '/images/doctor_farrukh.jpg',
     specialties: ['Fractional Laser Resurfacing', 'GFC & Autologous PRP Therapy', 'Clinical Dermatology & Dermal Fillers'],
   },
   {
@@ -472,7 +464,7 @@ export const doctors: Doctor[] = [
     credentials: 'MBBS, FCPS, Certified Aesthetic Medicine',
     pmcReg: 'PMDC Verified: 91045-P',
     experience: '10+ Years Clinical Experience',
-    portrait: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=800',
+    portrait: '/images/doctor_amna.jpg',
     specialties: ['Hydra Facial Radiance Protocols', 'Medical Chemical Peels & Melasma', 'Non-Surgical Skin Rejuvenation'],
   },
 ];

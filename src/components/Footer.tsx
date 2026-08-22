@@ -46,10 +46,11 @@ export default function Footer() {
               href={waPrivilegeLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-zinc-950 border-2 border-white font-medium px-8 py-3.5 rounded-full shadow-md transition-all duration-300 hover:bg-zinc-950 hover:text-white hover:border-white hover:shadow-xl hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 text-sm"
+              className="relative overflow-hidden bg-white text-zinc-900 font-medium px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 inline-flex items-center justify-center gap-2 text-sm group"
             >
-              <MessageCircle className="h-4 w-4 fill-current opacity-80" />
-              <span>Book via WhatsApp</span>
+              <span className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-zinc-950/15 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-[400%] transition-transform duration-1000 ease-in-out"></span>
+              <MessageCircle className="h-4 w-4 fill-current opacity-80 relative z-10" />
+              <span className="relative z-10">Book via WhatsApp</span>
             </a>
           </motion.div>
 

@@ -58,7 +58,7 @@ export default function Hero() {
       <div className="absolute -top-24 left-1/3 w-[650px] h-[500px] bg-gradient-to-b from-stone-200/40 via-amber-100/20 to-transparent rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-zinc-200/30 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-10 lg:py-16 min-h-[calc(100vh-100px)] flex items-center">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-10 lg:py-16 min-h-[calc(100vh-100px)] lg:min-h-[calc(100vh-80px)] flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center w-full">
 
           {/* LEFT column */}
@@ -85,14 +85,18 @@ export default function Hero() {
             </motion.div>
 
             {/* Luxury Balanced Headline */}
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 leading-[1.2] mb-6 max-w-xl text-balance">
-              <span>Advanced Medical Aesthetics for</span>{' '}
-              <span className="inline-block relative text-amber-800 italic whitespace-nowrap">
-                <span>{currentText}</span>
-                {/* Blinking Vertical Cursor */}
-                <span className="inline-block w-[2.5px] h-[0.85em] bg-amber-800 ml-1.5 align-middle animate-pulse" />
-              </span>
-            </h1>
+            <div className="min-h-[160px] sm:min-h-[180px] lg:min-h-[210px] flex flex-col justify-end mb-6">
+              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 leading-[1.18]">
+                <span>Advanced Medical</span>
+                <br />
+                <span>Aesthetics for</span>
+                <br />
+                <span className="inline-block text-amber-800 italic relative">
+                  <span>{currentText}</span>
+                  <span className="inline-block w-[2.5px] h-[0.85em] bg-amber-800 ml-1.5 align-middle animate-pulse" />
+                </span>
+              </h1>
+            </div>
 
             {/* Subtext */}
             <p className="text-zinc-600 text-sm lg:text-base max-w-lg leading-relaxed mb-8 font-normal">
@@ -131,14 +135,15 @@ export default function Hero() {
                 href={waPrivilegeLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-zinc-950 text-white border-2 border-zinc-950 font-medium px-8 py-3.5 rounded-full shadow-md transition-all duration-300 hover:bg-white hover:text-zinc-950 hover:shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center gap-2.5 text-sm"
+                className="relative overflow-hidden bg-zinc-950 text-white font-medium px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 group text-sm"
               >
-                <MessageCircle className="h-4 w-4 fill-current opacity-70" />
-                <span>Book VIP Consultation</span>
+                <span className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-[400%] transition-transform duration-1000 ease-in-out"></span>
+                <MessageCircle className="h-4 w-4 fill-current opacity-70 relative z-10" />
+                <span className="relative z-10">Book VIP Consultation</span>
               </a>
               <a
                 href="#treatments"
-                className="bg-white text-zinc-900 border border-zinc-200 font-medium px-8 py-3.5 rounded-full shadow-sm transition-all duration-300 hover:bg-zinc-950 hover:text-white hover:border-zinc-950 hover:shadow-md text-sm flex items-center justify-center gap-2 group"
+                className="bg-white text-zinc-900 border border-stone-300/80 hover:border-zinc-950 font-medium px-8 py-3.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 text-sm flex items-center justify-center gap-2 group"
               >
                 <span>Explore Treatments</span>
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -151,16 +156,16 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
-            className="lg:col-span-5 relative w-full max-w-lg mx-auto rounded-[2.5rem] p-2 bg-gradient-to-b from-zinc-200 to-white shadow-2xl border border-zinc-200/60 overflow-visible"
+            className="lg:col-span-5 relative w-full max-w-sm lg:max-w-lg mx-auto rounded-[2.5rem] p-2 bg-gradient-to-b from-zinc-200 to-white shadow-2xl border border-zinc-200/60 overflow-visible"
           >
             <img
               src={heroImage}
               alt="Elixir Aesthetics clinic interior"
-              className="w-full h-[450px] lg:h-[500px] object-cover rounded-[2rem] transition-all duration-700 hover:scale-[1.02] shadow-2xl"
+              className="w-full h-[320px] lg:h-[500px] object-cover rounded-[2rem] transition-all duration-700 hover:scale-[1.02] shadow-2xl"
             />
 
             {/* Floating badge — Google rating (top-left) */}
-            <div className="animate-bounce [animation-duration:3.5s] absolute -top-4 -left-6 bg-white/95 backdrop-blur-xl border border-zinc-200/90 px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2.5 z-20">
+            <div className="animate-bounce [animation-duration:3.5s] absolute left-2 top-2 lg:-top-4 lg:-left-6 bg-white/95 backdrop-blur-xl border border-zinc-200/90 px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2.5 z-20">
               <div className="flex items-center justify-center h-8 w-8 rounded-full bg-zinc-100 border border-zinc-200 flex-shrink-0">
                 <BadgeCheck className="h-4 w-4 text-zinc-950" />
               </div>
@@ -171,7 +176,7 @@ export default function Hero() {
             </div>
 
             {/* Floating badge — 50% OFF (bottom-right) */}
-            <div className="animate-pulse [animation-duration:4s] absolute -bottom-4 -right-4 bg-white/95 backdrop-blur-xl border border-zinc-200/90 px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2.5 z-20">
+            <div className="animate-pulse [animation-duration:4s] absolute right-2 bottom-2 lg:-bottom-4 lg:-right-4 bg-white/95 backdrop-blur-xl border border-zinc-200/90 px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2.5 z-20">
               <div className="flex items-center justify-center h-8 w-8 rounded-full bg-zinc-100 border border-zinc-200 flex-shrink-0">
                 <span className="text-xs font-bold text-zinc-950">%</span>
               </div>

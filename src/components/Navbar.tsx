@@ -27,8 +27,8 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 py-3.5 flex items-center justify-between">
         {/* LEFT — Logo monogram */}
         <a href="#" className="flex items-center gap-2.5 group flex-shrink-0">
-          <div className="relative h-9 w-9 rounded-xl bg-zinc-950 flex items-center justify-center shadow-md">
-            <span className="font-serif text-lg font-bold text-white">E</span>
+          <div className="relative h-8 w-8 rounded-xl bg-zinc-950 flex items-center justify-center shadow-md">
+            <span className="font-serif text-base font-bold text-white">E</span>
           </div>
           <div className="hidden sm:flex items-center gap-2 leading-tight">
             <span className="text-zinc-300 font-light text-base select-none">|</span>
@@ -62,7 +62,7 @@ export default function Navbar() {
           {/* Call pill (Secondary) */}
           <a
             href={telLink()}
-            className="hidden sm:flex items-center gap-1.5 border border-zinc-200 bg-white text-zinc-900 hover:bg-zinc-950 hover:text-white hover:border-zinc-950 hover:shadow-md px-4 py-2 text-xs font-semibold rounded-full shadow-sm transition-all duration-300"
+            className="hidden sm:flex items-center gap-1.5 bg-white text-zinc-900 border border-stone-300/80 hover:border-zinc-950 font-semibold px-4 py-2 text-xs rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
           >
             <Phone className="h-3.5 w-3.5" />
             <span className="hidden md:inline">Call Reception</span>
@@ -73,11 +73,11 @@ export default function Navbar() {
             href={waPrivilegeLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-zinc-950 text-white border-2 border-zinc-950 hover:bg-white hover:text-zinc-950 hover:shadow-xl hover:scale-105 active:scale-95 px-5 py-2 text-xs font-semibold rounded-full shadow-md transition-all duration-300 flex items-center gap-1.5"
+            className="relative overflow-hidden bg-zinc-950 text-white font-semibold p-3 md:px-5 md:py-2 text-xs rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-1.5 group min-w-[44px] min-h-[44px] md:min-w-0 md:min-h-0"
           >
-            <MessageCircle className="h-3.5 w-3.5 fill-current opacity-70" />
-            <span className="hidden sm:inline">Book on WhatsApp</span>
-            <span className="sm:hidden">Book</span>
+            <span className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-[400%] transition-transform duration-1000 ease-in-out"></span>
+            <MessageCircle className="h-3.5 w-3.5 fill-current opacity-70 relative z-10" />
+            <span className="hidden md:inline relative z-10">Book on WhatsApp</span>
           </a>
 
           {/* Mobile hamburger */}

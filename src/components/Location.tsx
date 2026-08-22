@@ -148,7 +148,7 @@ export default function Location() {
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <a
                 href={telLink()}
-                className="bg-white text-zinc-900 border border-zinc-200 font-medium px-8 py-3.5 rounded-full shadow-sm transition-all duration-300 hover:bg-zinc-950 hover:text-white hover:border-zinc-950 hover:shadow-md flex items-center justify-center gap-2 flex-1 text-sm"
+                className="bg-white text-zinc-900 border border-stone-300/80 hover:border-zinc-950 font-medium px-8 py-3.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 flex-1 text-sm"
               >
                 <Phone className="h-4 w-4" />
                 <span>Call Reception</span>
@@ -157,11 +157,12 @@ export default function Location() {
                 href={mapsLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-zinc-950 text-white border-2 border-zinc-950 font-medium px-8 py-3.5 rounded-full shadow-md transition-all duration-300 hover:bg-white hover:text-zinc-950 hover:shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center gap-2 flex-1 text-sm"
+                className="relative overflow-hidden bg-zinc-950 text-white font-medium px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 flex-1 text-sm group"
               >
-                <Navigation className="h-4 w-4" />
-                <span>Open in Google Maps</span>
-                <ExternalLink className="h-3.5 w-3.5 opacity-80" />
+                <span className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-[400%] transition-transform duration-1000 ease-in-out"></span>
+                <Navigation className="h-4 w-4 relative z-10" />
+                <span className="relative z-10">Open in Google Maps</span>
+                <ExternalLink className="h-3.5 w-3.5 opacity-80 relative z-10" />
               </a>
             </div>
           </motion.div>
