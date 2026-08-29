@@ -51,7 +51,7 @@ export default function Timeline() {
             <Compass className="h-3.5 w-3.5 text-zinc-950" />
             <span>Clinical Journey</span>
           </div>
-          <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl 2xl:text-8xl font-light tracking-tighter text-[#0A0A0A] text-center mb-6 leading-none">
+          <h2 className="font-serif text-4xl sm:text-6xl lg:text-7xl 2xl:text-8xl font-light tracking-tighter text-[#0A0A0A] text-center mb-6 leading-none">
             What To Expect
           </h2>
           <p className="text-sm lg:text-base text-zinc-650 max-w-xl mx-auto text-center font-light">

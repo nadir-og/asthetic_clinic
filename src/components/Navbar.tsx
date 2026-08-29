@@ -1,18 +1,19 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, LayoutGroup, AnimatePresence } from 'framer-motion';
 import { Phone, Menu, X, MessageCircle } from 'lucide-react';
 import { clinic, navLinks } from '@/data/clinicData';
 import { waPrivilegeLink, telLink } from '@/lib/whatsapp';
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   return (
     <motion.nav
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
-      className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-zinc-200/80 px-6 py-4"
+      className="sticky top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-zinc-200/80 px-6 py-4"
     >
       {/* Inner Container */}
       <div className="max-w-[1600px] w-full mx-auto flex items-center justify-between">
@@ -35,18 +36,36 @@ export default function Navbar() {
         </a>
 
         {/* CENTER — Nav links */}
-        <div className="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest font-normal text-zinc-500">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-semibold text-zinc-950 hover:text-amber-700 transition-colors"
-            >
-              {link.label}
-              <span className="absolute -bottom-1 left-0 h-px w-0 bg-zinc-950 transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
-        </div>
+        <LayoutGroup id="navigation">
+          <div 
+            className="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest font-normal text-zinc-500"
+            onMouseLeave={() => setHoveredLink(null)}
+          >
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onMouseEnter={() => setHoveredLink(link.href)}
+                className="relative py-1.5 text-sm font-semibold text-zinc-950 hover:text-amber-700 transition-colors"
+              >
+                {link.label}
+                {hoveredLink === link.href && (
+                  <motion.span
+                    layoutId="nav-underline"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-amber-700 origin-left"
+                    transition={{
+                      type: 'spring',
+                      stiffness: 350,
+                      damping: 30
+                    }}
+                  />
+                )}
+              </a>
+            ))}
+          </div>
+        </LayoutGroup>
 
         {/* RIGHT — CTAs */}
         <div className="flex items-center gap-3">

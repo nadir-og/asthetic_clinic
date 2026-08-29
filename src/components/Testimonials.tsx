@@ -171,12 +171,19 @@ export default function Testimonials() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="flex items-center justify-center gap-3.5 mt-16 text-center"
+          className="mt-16 flex justify-center"
         >
-          <Instagram className="h-4 w-4 text-zinc-950" />
-          <p className="text-[10px] text-zinc-500 uppercase tracking-widest">
-            Follow our clinic on Instagram for weekly updates and clinical insights.
-          </p>
+          <a
+            href="https://instagram.com/aura.aesthetics"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2.5 px-6 py-2.5 bg-stone-100 hover:bg-white border border-stone-200 hover:border-zinc-950 text-zinc-900 rounded-full transition-all duration-300 shadow-sm"
+          >
+            <Instagram className="h-4 w-4 text-zinc-950 flex-shrink-0" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-800">
+              Follow Us on Instagram
+            </span>
+          </a>
         </motion.div>
       </div>
     </section>

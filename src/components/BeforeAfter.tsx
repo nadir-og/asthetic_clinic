@@ -2,7 +2,6 @@ import { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { MoveHorizontal, FileText, Info } from 'lucide-react';
 import { beforeAfterCases } from '@/data/clinicData';
-
 export default function BeforeAfter() {
   const [activeCase, setActiveCase] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -77,6 +76,41 @@ export default function BeforeAfter() {
 
   return (
     <section id="results" className="relative py-16 lg:py-24">
+      {/* Custom Blemish Overlay Styles */}
+      <style>{`
+        .acne-overlay {
+          background-image: 
+            radial-gradient(circle at 38% 45%, rgba(200, 70, 70, 0.7) 4px, transparent 12px),
+            radial-gradient(circle at 40% 43%, rgba(180, 50, 50, 0.6) 3px, transparent 10px),
+            radial-gradient(circle at 36% 47%, rgba(200, 70, 70, 0.5) 5px, transparent 14px),
+            radial-gradient(circle at 33% 50%, rgba(190, 60, 60, 0.55) 4px, transparent 11px),
+            
+            radial-gradient(circle at 62% 48%, rgba(200, 70, 70, 0.65) 5px, transparent 13px),
+            radial-gradient(circle at 64% 50%, rgba(180, 50, 50, 0.6) 3px, transparent 9px),
+            radial-gradient(circle at 59% 52%, rgba(200, 70, 70, 0.5) 6px, transparent 15px),
+            
+            radial-gradient(circle at 45% 58%, rgba(200, 70, 70, 0.5) 4px, transparent 11px),
+            radial-gradient(circle at 52% 60%, rgba(190, 60, 60, 0.45) 5px, transparent 14px),
+            radial-gradient(circle at 48% 62%, rgba(180, 50, 50, 0.55) 3px, transparent 10px),
+            
+            radial-gradient(circle at 38% 54%, rgba(200, 70, 70, 0.5) 6px, transparent 16px),
+            radial-gradient(circle at 60% 56%, rgba(190, 60, 60, 0.4) 7px, transparent 17px);
+          filter: blur(0.5px);
+        }
+        .melasma-overlay {
+          background-image: 
+            radial-gradient(ellipse at 32% 46%, rgba(105, 60, 25, 0.45) 20px, transparent 40px),
+            radial-gradient(ellipse at 36% 44%, rgba(120, 70, 30, 0.35) 15px, transparent 32px),
+            radial-gradient(ellipse at 30% 48%, rgba(105, 60, 25, 0.4) 18px, transparent 35px),
+            
+            radial-gradient(ellipse at 65% 48%, rgba(105, 60, 25, 0.45) 24px, transparent 45px),
+            radial-gradient(ellipse at 62% 46%, rgba(120, 70, 30, 0.35) 17px, transparent 37px),
+            radial-gradient(ellipse at 68% 50%, rgba(105, 60, 25, 0.35) 20px, transparent 40px),
+            
+            radial-gradient(ellipse at 48% 42%, rgba(105, 60, 25, 0.3) 14px, transparent 30px);
+          filter: blur(1.2px);
+        }
+      `}</style>
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <motion.div
@@ -108,8 +142,8 @@ export default function BeforeAfter() {
                   }}
                   className={
                     isActive
-                      ? 'bg-zinc-950 text-white shadow-sm px-5 py-2 rounded-full text-xs font-semibold transition-all duration-300'
-                      : 'text-stone-600 hover:text-zinc-950 hover:bg-white/60 px-4 py-2 rounded-full text-xs font-medium transition-all duration-200'
+                      ? 'bg-zinc-950 text-white shadow-sm px-5 py-2 rounded-full text-xs font-semibold transition-all duration-300 whitespace-nowrap'
+                      : 'text-stone-600 hover:text-zinc-950 hover:bg-white/60 px-4 py-2 rounded-full text-xs font-medium transition-all duration-200 whitespace-nowrap'
                   }
                 >
                   <span className="relative z-10">{c.category}</span>
@@ -121,15 +155,21 @@ export default function BeforeAfter() {
 
         {/* Slider + Case note */}
         <div className="grid lg:grid-cols-12 gap-12 items-center">
-          {/* Slider */}
+          {/* Slider Static Scroll Wrapper */}
           <motion.div
-            key={currentCase.id}
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7 }}
             className="lg:col-span-7"
           >
+            {/* Inner Slider (remounts cleanly on tab change) */}
+            <motion.div
+              key={`slider-${currentCase.id}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4 }}
+            >
             <div
               ref={containerRef}
               className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden rounded-[2rem] border border-zinc-200/80 shadow-sm cursor-ew-resize select-none touch-none bg-zinc-950"
@@ -161,6 +201,13 @@ export default function BeforeAfter() {
                   className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[700ms]"
                   draggable={false}
                 />
+                {/* Dynamically overlay blemish effects on Before view */}
+                {currentCase.id === 'acne-scar' && (
+                  <div className="absolute inset-0 acne-overlay mix-blend-multiply opacity-85" />
+                )}
+                {currentCase.id === 'skin-radiance' && (
+                  <div className="absolute inset-0 melasma-overlay mix-blend-multiply opacity-80" />
+                )}
               </motion.div>
 
               {/* Labels */}
@@ -181,18 +228,24 @@ export default function BeforeAfter() {
                 </div>
               </motion.div>
             </div>
-
           </motion.div>
+        </motion.div>
 
-          {/* Case note */}
+          {/* Case note Static Scroll Wrapper */}
           <motion.div
-            key={currentCase.id}
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7 }}
             className="lg:col-span-5"
           >
+            {/* Inner Case note (remounts cleanly on tab change) */}
+            <motion.div
+              key={`note-${currentCase.id}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4 }}
+            >
             <div className="bg-white border border-zinc-200/80 rounded-[2rem] p-6 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-400 flex flex-col justify-between">
               <div className="flex items-center gap-3 mb-4">
                 <FileText className="h-5 w-5 text-zinc-950" />
@@ -222,8 +275,9 @@ export default function BeforeAfter() {
               </div>
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
+    </div>
     </section>
   );
 }

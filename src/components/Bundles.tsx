@@ -46,7 +46,7 @@ export default function Bundles() {
                   bundle.bestValue
                     ? 'border-2 border-zinc-950 lg:scale-105 lg:-my-2 z-10'
                     : 'border border-zinc-200/80'
-                }`}
+                } ${idx === 2 ? 'md:col-span-2 lg:col-span-1' : ''}`}
               >
                 {/* Best Seller ribbon */}
                 {bundle.bestValue && (

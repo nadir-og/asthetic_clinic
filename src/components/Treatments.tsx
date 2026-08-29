@@ -64,8 +64,8 @@ export default function Treatments() {
                 onClick={() => setActiveFilter(tab)}
                 className={
                   isActive
-                    ? 'bg-zinc-950 text-white shadow-sm px-5 py-2 rounded-full text-xs font-semibold transition-all duration-300'
-                    : 'text-stone-600 hover:text-zinc-950 hover:bg-white/60 px-4 py-2 rounded-full text-xs font-medium transition-all duration-200'
+                    ? 'bg-zinc-950 text-white shadow-sm px-5 py-2 rounded-full text-xs font-semibold transition-all duration-300 whitespace-nowrap'
+                    : 'text-stone-600 hover:text-zinc-950 hover:bg-white/60 px-4 py-2 rounded-full text-xs font-medium transition-all duration-200 whitespace-nowrap'
                 }
               >
                 {tab}
@@ -76,10 +76,7 @@ export default function Treatments() {
       </div>
 
       {/* Cards grid */}
-      <motion.div
-        layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-6"
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-6">
         <AnimatePresence mode="popLayout">
           {filtered.map((service, idx) => {
             const discount = Math.round(
@@ -88,12 +85,11 @@ export default function Treatments() {
             return (
               <motion.div
                 key={service.id}
-                layout
-                initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, y: 45 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: idx * 0.05 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
                 className="group relative bg-white border border-zinc-100 shadow-[0_8px_30px_rgb(0,0,0,0.015)] rounded-3xl p-5 hover:shadow-[0_20px_40px_rgba(139,92,26,0.05)] hover:border-amber-500/25 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between overflow-hidden transform-gpu will-change-transform"
               >
                 {/* Subtle gold sheen hover glow */}
@@ -171,7 +167,7 @@ export default function Treatments() {
             );
           })}
         </AnimatePresence>
-      </motion.div>
+      </div>
     </section>
   );
 }

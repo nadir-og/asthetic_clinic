@@ -148,21 +148,26 @@ export default function Location() {
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <a
                 href={telLink()}
-                className="bg-white text-zinc-900 border border-stone-300/80 hover:border-zinc-950 font-medium px-8 py-3.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 flex-1 text-sm"
+                className="relative overflow-hidden bg-white text-zinc-950 border border-stone-300/80 hover:border-zinc-950 font-medium px-8 py-3.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 flex-1 text-sm group"
               >
-                <Phone className="h-4 w-4" />
-                <span>Call Reception</span>
+                <span className="absolute inset-0 bg-zinc-950 rounded-t-[100%] translate-y-[102%] group-hover:translate-y-0 group-hover:rounded-none transition-all duration-500 ease-out pointer-events-none" />
+                <span className="relative z-10 flex items-center justify-center gap-2 text-zinc-950 group-hover:text-white transition-colors duration-500">
+                  <Phone className="h-4 w-4" />
+                  <span>Call Reception</span>
+                </span>
               </a>
               <a
                 href={mapsLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative overflow-hidden bg-zinc-950 text-white font-medium px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 flex-1 text-sm group"
+                className="relative overflow-hidden bg-zinc-950 text-white border border-zinc-950 font-medium px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 flex-1 text-sm group"
               >
-                <span className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-[400%] transition-transform duration-1000 ease-in-out"></span>
-                <Navigation className="h-4 w-4 relative z-10" />
-                <span className="relative z-10">Open in Google Maps</span>
-                <ExternalLink className="h-3.5 w-3.5 opacity-80 relative z-10" />
+                <span className="absolute inset-0 bg-white rounded-t-[100%] translate-y-[102%] group-hover:translate-y-0 group-hover:rounded-none transition-all duration-500 ease-out pointer-events-none" />
+                <span className="relative z-10 flex items-center justify-center gap-2 text-white group-hover:text-zinc-950 transition-colors duration-500">
+                  <Navigation className="h-4 w-4" />
+                  <span>Open in Google Maps</span>
+                  <ExternalLink className="h-3.5 w-3.5 opacity-80" />
+                </span>
               </a>
             </div>
           </motion.div>

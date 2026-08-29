@@ -276,8 +276,8 @@ export const beforeAfterCases: BeforeAfterCase[] = [
     id: 'acne-scar',
     category: 'Acne Scars & Texture',
     title: 'Deep Rolling Acne Scar & Texture Resurfacing',
-    beforeImage: '/images/acne_before.jpg',
-    afterImage: '/images/acne_after.jpg',
+    beforeImage: '/images/acne_face_after.jpg',
+    afterImage: '/images/acne_face_after.jpg',
     caseNote:
       'Close-up bilateral cheek profile with active erythema and grade-3 atrophic rolling acne scars. Treated with 4 sessions of Fractional Erbium-Glass Laser combined with cross-linked HA hydration. 78% depth reduction with radiant glass skin outcome.',
     disclaimer: 'Clinical photographic documentation under uniform medical lighting',
@@ -289,8 +289,8 @@ export const beforeAfterCases: BeforeAfterCase[] = [
     id: 'skin-radiance',
     category: 'Pigmentation & Melasma',
     title: 'Dermal Melasma & Epidermal Tone Harmonization',
-    beforeImage: '/images/skin_before.jpg',
-    afterImage: '/images/skin_after.jpg',
+    beforeImage: '/images/melasma_face_after.jpg',
+    afterImage: '/images/melasma_face_after.jpg',
     caseNote:
       'Patient treated with dermatologist-formulated medical TCA depigmenting peel series and clinical antioxidant infusion. Deep melanin dispersion with even luminous skin tone.',
     disclaimer: 'Clinical photographic representation of results',
