@@ -78,7 +78,7 @@ export default function Treatments() {
       {/* Cards grid */}
       <motion.div
         layout
-        className="grid grid-cols-1 gap-4 px-4 md:grid-cols-2 md:gap-6 md:px-6 lg:grid-cols-3 lg:gap-6 lg:px-12 max-w-7xl mx-auto"
+        className="grid grid-cols-1 gap-x-4 gap-y-8 px-4 md:grid-cols-2 md:gap-x-6 md:gap-y-10 md:px-6 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-12 lg:px-12 max-w-7xl mx-auto"
       >
         <AnimatePresence mode="popLayout">
           {filtered.map((service, idx) => {

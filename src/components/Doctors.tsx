@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Doctors = () => {
   return (
@@ -12,7 +13,13 @@ const Doctors = () => {
        <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           
           {/* Doctor 1 */}
-          <div className="bg-white rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group border border-zinc-100/50">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-white rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group border border-zinc-100/50"
+          >
             <div className="w-full aspect-square sm:aspect-[4/3] bg-zinc-100 relative overflow-hidden shrink-0">
               <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=800&auto=format&fit=crop" alt="Dr. Farrukh Shahzad" className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
             </div>
@@ -25,12 +32,18 @@ const Doctors = () => {
                 With over 12 years of clinical dermatology experience, Dr. Shahzad leads the clinic's medical vision and patient protocols. He specializes in fractional laser resurfacing and autologous PRP therapy, treating every procedure as a precision science measured by lasting, natural results.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Doctor 2 */}
-          <div className="bg-white rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group border border-zinc-100/50">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-white rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group border border-zinc-100/50"
+          >
             <div className="w-full aspect-square sm:aspect-[4/3] bg-zinc-100 relative overflow-hidden shrink-0">
-              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=800&auto=format&fit=crop" alt="Dr. Amna Farrukh" className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+              <img src="https://images.unsplash.com/photo-1683348858658-7c6b0eff2a16?q=80&w=687&auto=format&fit=crop" alt="Dr. Amna Farrukh" className="absolute inset-0 w-full h-full object-cover object-[center_25%] transition-transform duration-700 group-hover:scale-105" />
             </div>
             <div className="p-8 flex flex-col bg-white">
               <div className="flex justify-between items-baseline mb-4">
@@ -41,7 +54,7 @@ const Doctors = () => {
                 Dr. Farrukh founded her practice on a simple belief: medical aesthetics should earn its keep. She pairs a dermatologist's eye with clinical precision, specializing in Hydra Facial protocols and medical chemical peels to ensure every treatment is safe, modern, and built to transform.
               </p>
             </div>
-          </div>
+          </motion.div>
 
        </div>
     </section>

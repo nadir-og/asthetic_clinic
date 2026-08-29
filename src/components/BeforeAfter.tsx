@@ -130,9 +130,10 @@ export default function BeforeAfter() {
           {/* Slider */}
           <motion.div
             key={currentCase.id}
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4 }}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="lg:col-span-7"
           >
             <div
@@ -196,10 +197,11 @@ export default function BeforeAfter() {
 
           {/* Case note */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            key={currentCase.id}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.6 }}
             className="lg:col-span-5"
           >
             <div className="bg-white border border-zinc-200/80 rounded-[2rem] p-6 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-400 flex flex-col justify-between">

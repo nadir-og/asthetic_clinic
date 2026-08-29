@@ -63,10 +63,10 @@ export default function Location() {
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
           {/* Map card */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
             className="relative rounded-3xl overflow-hidden bg-white border border-zinc-200 p-2 shadow-sm"
           >
             <div className="relative w-full h-full min-h-[320px] sm:min-h-[400px] rounded-2xl overflow-hidden">
@@ -83,10 +83,10 @@ export default function Location() {
 
           {/* Info card */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
             className="flex flex-col gap-5 justify-between"
           >
             <div className="space-y-5">
