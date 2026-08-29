@@ -5,7 +5,7 @@ import { faqs } from '@/data/clinicData';
 import { waQuestionLink } from '@/lib/whatsapp';
 
 export default function FAQ() {
-  const [openId, setOpenId] = useState<string | null>(faqs[0]?.id ?? null);
+  const [openId, setOpenId] = useState<string | null>(null);
 
   return (
     <section id="faq" className="relative py-16 lg:py-24">

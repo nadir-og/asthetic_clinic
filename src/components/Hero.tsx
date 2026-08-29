@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
   Star,
-  Users,
-  Stethoscope,
   MessageCircle,
   ArrowRight,
   BadgeCheck,
@@ -107,23 +105,18 @@ export default function Hero() {
             </p>
 
             {/* Social proof badges */}
-            <div className="flex flex-wrap items-center gap-6 py-4 border-y border-zinc-200/80 mb-8">
+            <div className="flex flex-wrap items-center gap-8 py-6 border-y border-zinc-200/60 mb-8">
               {heroStats.map((stat, i) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 + i * 0.1 }}
-                  className="flex items-center gap-3"
+                  className="flex items-center"
                 >
-                  <div className="flex items-center justify-center h-10 w-10 rounded-full bg-zinc-100 border border-zinc-200 flex-shrink-0">
-                    {i === 0 && <Users className="h-4 w-4 text-zinc-900" />}
-                    {i === 1 && <Star className="h-4 w-4 text-zinc-900 fill-zinc-900/10" />}
-                    {i === 2 && <Stethoscope className="h-4 w-4 text-zinc-900" />}
-                  </div>
                   <div>
-                    <p className="text-lg font-bold text-zinc-900 leading-none">{stat.value}</p>
-                    <p className="text-xs text-zinc-500 mt-1 font-medium">{stat.label}</p>
+                    <p className="text-2xl font-serif font-bold text-zinc-950 leading-none">{stat.value}</p>
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 mt-2 font-medium">{stat.label}</p>
                   </div>
                 </motion.div>
               ))}

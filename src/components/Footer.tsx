@@ -25,7 +25,7 @@ export default function Footer() {
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="relative h-12 w-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center">
-                <span className="font-serif text-2xl font-bold text-white">E</span>
+                <span className="font-serif text-2xl font-bold text-white">A</span>
                 <div className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-emerald-500" />
               </div>
               <div>
@@ -33,7 +33,7 @@ export default function Footer() {
                   {clinic.name}
                 </p>
                 <p className="text-xs uppercase tracking-[0.15em] text-zinc-400 font-semibold">
-                  Aesthetics & Health Care
+                  Advanced Aesthetics
                 </p>
               </div>
             </div>
@@ -119,7 +119,7 @@ export default function Footer() {
                   className="flex items-start gap-2.5 text-sm text-stone-300 hover:text-white transition-colors"
                 >
                   <Instagram className="h-4 w-4 text-zinc-400 flex-shrink-0 mt-0.5" />
-                  @elixir.aesthetics
+                  @aura.aesthetics
                 </a>
               </li>
             </ul>
@@ -134,7 +134,7 @@ export default function Footer() {
             </p>
             <p className="text-xs text-stone-400 flex items-center gap-1.5">
               <Heart className="h-3 w-3 text-zinc-400" />
-              Crafted with care for {clinic.city}.
+              Crafted with care for your aesthetic journey.
             </p>
           </div>
           <p className="text-[10px] text-stone-500 mt-3 text-center sm:text-left max-w-3xl leading-relaxed">

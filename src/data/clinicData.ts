@@ -63,28 +63,28 @@ export interface Faq {
 
 // ---------------------------------------------------------------- Clinic Info
 export const clinic = {
-  name: 'Elixir Aesthetics & Health Care',
-  city: 'Multan',
-  phone: '0307 0902211',
-  whatsappNumber: '923070902211',
-  tagline: 'Best in Class Medical Aesthetics | Non-Surgical & Surgical Transformation',
-  rating: '4.9★ (73+ Google Reviews)',
+  name: 'Aura Medical Aesthetics',
+  city: 'Prime Medical District',
+  phone: '123-456-7890',
+  whatsappNumber: '1234567890',
+  tagline: 'Advanced Medical Aesthetics & Hair Restoration',
+  rating: '5.0★ Google Rating',
   announcement:
     '✨ Limited-Time Seasonal Privilege: Up to 50% OFF Signature Hydra Facials & Laser | Book via WhatsApp',
-  address: 'Model Town Road, B Block, Multan',
+  address: '123 Luxury Boulevard, Prime Medical District',
   timings: 'Mon – Sat: 1:00 PM – 9:00 PM',
-  mapsQuery: 'Model Town Road, B Block, Multan',
+  mapsQuery: 'Multan, Pakistan',
 };
 
 // ----------------------------------------------------------------- Hero Stats
 export const heroStats = [
-  { value: '1,000+', label: 'Happy Clients' },
-  { value: '4.9★', label: 'Google Rating' },
+  { value: '500+', label: 'Happy Clients' },
+  { value: '5.0★', label: 'Google Rating' },
   { value: 'Specialist', label: 'Doctors' },
 ];
 
 export const heroImage =
-  'https://images.pexels.com/photos/16571735/pexels-photo-16571735.jpeg?auto=compress&cs=tinysrgb&w=900';
+  'https://images.pexels.com/photos/16571735/pexels-photo-16571735.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80';
 
 // ------------------------------------------------------------------- Services
 export const services: Service[] = [
@@ -105,7 +105,7 @@ export const services: Service[] = [
       'Suitable for all skin types',
     ],
     image:
-      'https://images.pexels.com/photos/9775369/pexels-photo-9775369.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/9775369/pexels-photo-9775369.jpeg?auto=compress&cs=tinysrgb&w=800&q=75',
   },
   {
     id: 'acne-scar',
@@ -124,7 +124,7 @@ export const services: Service[] = [
       'Visible results in 3 sessions',
     ],
     image:
-      'https://images.pexels.com/photos/7789649/pexels-photo-7789649.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/7789649/pexels-photo-7789649.jpeg?auto=compress&cs=tinysrgb&w=800&q=75',
   },
   {
     id: 'hair-restoration',
@@ -143,7 +143,7 @@ export const services: Service[] = [
       'Minimal discomfort',
     ],
     image:
-      'https://images.pexels.com/photos/28994563/pexels-photo-28994563.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/28994563/pexels-photo-28994563.jpeg?auto=compress&cs=tinysrgb&w=800&q=75',
   },
   {
     id: 'laser-hair-removal',
@@ -162,7 +162,7 @@ export const services: Service[] = [
       'Painless cooling tip',
     ],
     image:
-      'https://images.pexels.com/photos/4586726/pexels-photo-4586726.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/4586726/pexels-photo-4586726.jpeg?auto=compress&cs=tinysrgb&w=800&q=75',
   },
   {
     id: 'chemical-peel',
@@ -181,7 +181,7 @@ export const services: Service[] = [
       'Even, radiant complexion',
     ],
     image:
-      'https://images.pexels.com/photos/6663600/pexels-photo-6663600.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/6663600/pexels-photo-6663600.jpeg?auto=compress&cs=tinysrgb&w=800&q=75',
   },
   {
     id: 'tattoo-removal',
@@ -200,7 +200,7 @@ export const services: Service[] = [
       'Safe on all ink colours',
     ],
     image:
-      'https://images.pexels.com/photos/7108227/pexels-photo-7108227.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://images.pexels.com/photos/7108227/pexels-photo-7108227.jpeg?auto=compress&cs=tinysrgb&w=800&q=75',
   },
 ];
 
@@ -321,9 +321,9 @@ export const testimonials: Testimonial[] = [
     treatment: 'Hydra Facial Glow',
     rating: 5,
     review:
-      'I have never seen my skin glow like this before. The hydra facial was so relaxing and the results were instant. Worth every rupee, especially with the seasonal privilege deal!',
+      'I have never seen my skin glow like this before. The hydra facial was so relaxing and the results were instant. Worth every penny, especially with the seasonal privilege deal!',
     avatar:
-      'https://images.pexels.com/photos/1820575/pexels-photo-1820575.jpeg?auto=compress&cs=tinysrgb&w=200',
+      'https://images.pexels.com/photos/1820575/pexels-photo-1820575.jpeg?auto=compress&cs=tinysrgb&w=200&q=75',
     verified: true,
   },
   {
@@ -332,9 +332,9 @@ export const testimonials: Testimonial[] = [
     treatment: 'Hair Density Restoration',
     rating: 5,
     review:
-      'After 6 sessions of GFC therapy my hair density is visibly better. The doctors are highly professional and explain everything clearly. Highly recommend Elixir Aesthetics.',
+      'After 6 sessions of GFC therapy my hair density is visibly better. The doctors are highly professional and explain everything clearly. Highly recommend Aura Aesthetics.',
     avatar:
-      'https://images.pexels.com/photos/16160809/pexels-photo-16160809.jpeg?auto=compress&cs=tinysrgb&w=200',
+      'https://images.pexels.com/photos/16160809/pexels-photo-16160809.jpeg?auto=compress&cs=tinysrgb&w=200&q=75',
     verified: true,
   },
   {
@@ -343,9 +343,9 @@ export const testimonials: Testimonial[] = [
     treatment: 'Acne Scar Resurfacing',
     rating: 5,
     review:
-      'My acne scars were something I was very conscious about. After 4 sessions at Elixir, the difference is remarkable. My skin feels smooth and confident again.',
+      'My acne scars were something I was very conscious about. After 4 sessions at Aura, the difference is remarkable. My skin feels smooth and confident again.',
     avatar:
-      'https://images.pexels.com/photos/14156484/pexels-photo-14156484.jpeg?auto=compress&cs=tinysrgb&w=200',
+      'https://images.pexels.com/photos/14156484/pexels-photo-14156484.jpeg?auto=compress&cs=tinysrgb&w=200&q=75',
     verified: true,
   },
   {
@@ -356,7 +356,7 @@ export const testimonials: Testimonial[] = [
     review:
       'Best decision I made! The laser sessions were painless and the staff made me feel so comfortable. Permanent results are showing already after 3 sessions.',
     avatar:
-      'https://images.pexels.com/photos/16160801/pexels-photo-16160801.jpeg?auto=compress&cs=tinysrgb&w=200',
+      'https://images.pexels.com/photos/16160801/pexels-photo-16160801.jpeg?auto=compress&cs=tinysrgb&w=200&q=75',
     verified: true,
   },
   {
@@ -367,7 +367,7 @@ export const testimonials: Testimonial[] = [
     review:
       'The clinical protocol was incredible. My skin texture has completely transformed. The medical team genuinely cares about scientific results.',
     avatar:
-      'https://images.pexels.com/photos/1820559/pexels-photo-1820559.jpeg?auto=compress&cs=tinysrgb&w=200',
+      'https://images.pexels.com/photos/1820559/pexels-photo-1820559.jpeg?auto=compress&cs=tinysrgb&w=200&q=75',
     verified: true,
   },
   {
@@ -376,18 +376,18 @@ export const testimonials: Testimonial[] = [
     treatment: 'Medical Chemical Peel',
     rating: 5,
     review:
-      'My pigmentation has faded so much after the chemical peel sessions. The doctors at Elixir are true specialists — they assessed my skin thoroughly before starting.',
+      'My pigmentation has faded so much after the chemical peel sessions. The doctors at Aura are true specialists — they assessed my skin thoroughly before starting.',
     avatar:
-      'https://images.pexels.com/photos/34761515/pexels-photo-34761515.jpeg?auto=compress&cs=tinysrgb&w=200',
+      'https://images.pexels.com/photos/34761515/pexels-photo-34761515.jpeg?auto=compress&cs=tinysrgb&w=200&q=75',
     verified: true,
   },
 ];
 
 export const socialStats = [
-  { value: '490+', label: 'Patients Loved', numericTarget: 490, suffix: '+' },
-  { value: '73+', label: 'Google Reviews', numericTarget: 73, suffix: '+' },
+  { value: '500+', label: 'Patients Loved', numericTarget: 500, suffix: '+' },
+  { value: '100+', label: 'Verified Reviews', numericTarget: 100, suffix: '+' },
   { value: '2.5K+', label: 'Instagram Community', numericTarget: 2.5, suffix: 'K+' },
-  { value: '4.9★', label: 'Average Rating', numericTarget: 4.9, suffix: '★' },
+  { value: '5.0★', label: 'Average Rating', numericTarget: 5.0, suffix: '★' },
 ];
 
 // ----------------------------------------------------------------------- FAQs
@@ -449,20 +449,20 @@ export interface Doctor {
 export const doctors: Doctor[] = [
   {
     id: 'dr-farrukh',
-    name: 'Dr. Farrukh Shahzad',
-    title: 'Lead Aesthetic Physician & Dermatologist',
-    credentials: 'MBBS, MCPS Dermatology, Certified Aesthetic Physician',
-    pmcReg: 'PMDC Verified: 89241-P',
+    name: 'Board-Certified Dermatologist',
+    title: 'Lead Specialist Physician',
+    credentials: 'Board Certified Dermatologist, Fellow of Aesthetic Medicine',
+    pmcReg: 'Board Certified: #89241',
     experience: '12+ Years Clinical Experience',
     portrait: '/images/doctor_farrukh.jpg',
     specialties: ['Fractional Laser Resurfacing', 'GFC & Autologous PRP Therapy', 'Clinical Dermatology & Dermal Fillers'],
   },
   {
     id: 'dr-amna',
-    name: 'Dr. Amna Farrukh',
+    name: 'Lead Aesthetic Physician',
     title: 'Aesthetic Consultant & Laser Specialist',
-    credentials: 'MBBS, FCPS, Certified Aesthetic Medicine',
-    pmcReg: 'PMDC Verified: 91045-P',
+    credentials: 'Board Certified Aesthetic Medicine Specialist',
+    pmcReg: 'Board Certified: #91045',
     experience: '10+ Years Clinical Experience',
     portrait: '/images/doctor_amna.jpg',
     specialties: ['Hydra Facial Radiance Protocols', 'Medical Chemical Peels & Melasma', 'Non-Surgical Skin Rejuvenation'],
