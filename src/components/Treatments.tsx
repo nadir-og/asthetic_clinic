@@ -144,11 +144,11 @@ export default function Treatments() {
 
                 {/* Pricing & WhatsApp Action */}
                 <div className="pt-3.5 border-t border-zinc-100 flex items-center justify-between gap-3">
-                  <div className="flex items-baseline">
-                    <span className="text-lg font-bold text-zinc-950">
+                  <div className="flex flex-col justify-center">
+                    <span className="text-lg font-bold text-zinc-950 leading-none">
                       Rs. {service.salePrice.toLocaleString()}
                     </span>
-                    <span className="text-xs text-zinc-400 line-through ml-1.5 font-normal">
+                    <span className="text-[10px] text-zinc-400 line-through mt-1.5 font-normal leading-none">
                       Rs. {service.originalPrice.toLocaleString()}
                     </span>
                   </div>
@@ -157,11 +157,14 @@ export default function Treatments() {
                     href={waServiceLink(service.title, service.salePrice)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-zinc-950 group-hover:bg-amber-800 text-white text-xs font-semibold px-5 py-2.5 rounded-full flex items-center gap-1.5 shadow-sm transition-all duration-300 group-hover:shadow-md active:scale-95 whitespace-nowrap"
+                    className="relative overflow-hidden bg-zinc-950 text-white text-xs font-semibold px-5 py-2.5 rounded-full flex items-center gap-1.5 shadow-sm border border-zinc-950 transition-all duration-300 active:scale-95 whitespace-nowrap group/btn"
                   >
-                    <MessageCircle className="h-3.5 w-3.5 fill-current opacity-90" />
-                    <span>Claim Deal</span>
-                    <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                    <span className="absolute inset-0 bg-white rounded-t-[100%] translate-y-[102%] group-hover/btn:translate-y-0 group-hover/btn:rounded-none transition-all duration-500 ease-out pointer-events-none" />
+                    <span className="relative z-10 flex items-center gap-1.5 text-white group-hover/btn:text-zinc-950 transition-colors duration-500">
+                      <MessageCircle className="h-3.5 w-3.5 fill-current opacity-90" />
+                      <span>Claim Deal</span>
+                      <ArrowRight className="h-3 w-3 transition-transform group-hover/btn:translate-x-0.5" />
+                    </span>
                   </a>
                 </div>
               </motion.div>

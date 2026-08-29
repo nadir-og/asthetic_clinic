@@ -130,16 +130,21 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="relative overflow-hidden bg-zinc-950 text-white font-medium px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 group text-sm"
               >
-                <span className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-[400%] transition-transform duration-1000 ease-in-out"></span>
-                <MessageCircle className="h-4 w-4 fill-current opacity-70 relative z-10" />
-                <span className="relative z-10">Book VIP Consultation</span>
+                <span className="absolute inset-0 bg-white rounded-t-[100%] translate-y-[102%] group-hover:translate-y-0 group-hover:rounded-none transition-all duration-500 ease-out pointer-events-none" />
+                <span className="relative z-10 flex items-center gap-2 text-white group-hover:text-zinc-950 transition-colors duration-500">
+                  <MessageCircle className="h-4 w-4 fill-current opacity-70" />
+                  <span>Book VIP Consultation</span>
+                </span>
               </a>
               <a
                 href="#treatments"
-                className="bg-white text-zinc-900 border border-stone-300/80 hover:border-zinc-950 font-medium px-8 py-3.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 text-sm flex items-center justify-center gap-2 group"
+                className="relative overflow-hidden bg-white text-zinc-950 border border-stone-300/80 hover:border-zinc-950 font-medium px-8 py-3.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 text-sm flex items-center justify-center gap-2 group"
               >
-                <span>Explore Treatments</span>
-                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <span className="absolute inset-0 bg-zinc-950 rounded-t-[100%] translate-y-[102%] group-hover:translate-y-0 group-hover:rounded-none transition-all duration-500 ease-out pointer-events-none" />
+                <span className="relative z-10 flex items-center gap-2 text-zinc-950 group-hover:text-white transition-colors duration-500">
+                  <span>Explore Treatments</span>
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </span>
               </a>
             </div>
           </motion.div>

@@ -53,10 +53,13 @@ export default function Navbar() {
           {/* Call (Secondary Outline) */}
           <a
             href={telLink()}
-            className="hidden sm:flex items-center gap-1.5 bg-transparent text-zinc-950 border border-zinc-200 hover:border-zinc-950 font-medium px-6 py-3 text-xs tracking-widest uppercase rounded-full transition-colors duration-300"
+            className="relative overflow-hidden hidden sm:flex items-center gap-1.5 bg-transparent text-zinc-950 border border-zinc-200 hover:border-zinc-950 font-medium px-6 py-3 text-xs tracking-widest uppercase rounded-full transition-all duration-300 group"
           >
-            <Phone className="h-3.5 w-3.5" />
-            <span className="hidden md:inline">Call Reception</span>
+            <span className="absolute inset-0 bg-zinc-950 rounded-t-[100%] translate-y-[102%] group-hover:translate-y-0 group-hover:rounded-none transition-all duration-500 ease-out pointer-events-none" />
+            <span className="relative z-10 flex items-center gap-1.5 text-zinc-950 group-hover:text-white transition-colors duration-500">
+              <Phone className="h-3.5 w-3.5" />
+              <span className="hidden md:inline">Call Reception</span>
+            </span>
           </a>
 
           {/* Book via WhatsApp (Primary Pill) */}
@@ -64,10 +67,13 @@ export default function Navbar() {
             href={waPrivilegeLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-zinc-950 text-white font-medium px-6 py-3 text-xs tracking-widest uppercase rounded-full border border-zinc-950 hover:bg-white hover:text-zinc-950 transition-colors duration-300 shadow-sm flex items-center justify-center gap-1.5 flex-shrink-0"
+            className="relative overflow-hidden bg-zinc-950 text-white font-medium px-6 py-3 text-xs tracking-widest uppercase rounded-full border border-zinc-950 transition-all duration-300 shadow-sm flex items-center justify-center gap-1.5 flex-shrink-0 group"
           >
-            <MessageCircle className="h-3.5 w-3.5 fill-current opacity-70" />
-            <span className="hidden md:inline">Book on WhatsApp</span>
+            <span className="absolute inset-0 bg-white rounded-t-[100%] translate-y-[102%] group-hover:translate-y-0 group-hover:rounded-none transition-all duration-500 ease-out pointer-events-none" />
+            <span className="relative z-10 flex items-center gap-1.5 text-white group-hover:text-zinc-950 transition-colors duration-500">
+              <MessageCircle className="h-3.5 w-3.5 fill-current opacity-70" />
+              <span className="hidden md:inline">Book on WhatsApp</span>
+            </span>
           </a>
 
           {/* Mobile hamburger */}
