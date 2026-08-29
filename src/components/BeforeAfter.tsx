@@ -86,12 +86,6 @@ export default function BeforeAfter() {
           transition={{ duration: 0.6 }}
           className="text-center mb-10 lg:mb-14"
         >
-          <div className="inline-flex items-center gap-2 rounded-full bg-zinc-100 border border-zinc-200 px-4 py-1.5 mb-4 shadow-sm">
-            <FileText className="h-3.5 w-3.5 text-zinc-950" />
-            <span className="text-xs font-semibold text-zinc-700 uppercase tracking-wider">
-              Clinical Photographic Results
-            </span>
-          </div>
           <h2 className="font-serif text-4xl lg:text-5xl font-bold text-zinc-950 text-center mb-4 leading-tight tracking-tight">
             Before & After Clinical Outcomes
           </h2>
@@ -188,11 +182,6 @@ export default function BeforeAfter() {
               </motion.div>
             </div>
 
-            {/* Disclaimer */}
-            <p className="mt-3 flex items-center gap-1.5 text-xs text-zinc-400 font-light italic">
-              <Info className="h-3.5 w-3.5 flex-shrink-0 text-zinc-400" />
-              {currentCase.disclaimer}
-            </p>
           </motion.div>
 
           {/* Case note */}

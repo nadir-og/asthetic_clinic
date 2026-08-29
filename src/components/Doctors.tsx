@@ -43,7 +43,7 @@ const Doctors = () => {
             className="bg-white rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group border border-zinc-100/50"
           >
             <div className="w-full aspect-square sm:aspect-[4/3] bg-zinc-100 relative overflow-hidden shrink-0">
-              <img src="https://images.unsplash.com/photo-1683348858658-7c6b0eff2a16?q=80&w=687&auto=format&fit=crop" alt="Dr. Amna Farrukh" className="absolute inset-0 w-full h-full object-cover object-[center_25%] transition-transform duration-700 group-hover:scale-105" />
+              <img src="https://images.unsplash.com/photo-1683348858658-7c6b0eff2a16?q=80&w=687&auto=format&fit=crop" alt="Dr. Amna Farrukh" className="absolute inset-0 w-full h-full object-cover object-[center_35%] transition-transform duration-700 group-hover:scale-105" />
             </div>
             <div className="p-8 flex flex-col bg-white">
               <div className="flex justify-between items-baseline mb-4">
