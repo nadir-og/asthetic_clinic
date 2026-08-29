@@ -64,7 +64,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="lg:col-span-6 flex flex-col justify-center"
+            className="lg:col-span-7 flex flex-col justify-center"
           >
             {/* Trust pill */}
             <motion.div
@@ -149,12 +149,12 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
-            className="lg:col-span-6 relative w-full max-w-md lg:max-w-xl mx-auto rounded-[2.5rem] p-2 bg-gradient-to-b from-zinc-200 to-white shadow-2xl border border-zinc-200/60 overflow-visible"
+            className="lg:col-span-5 relative w-full max-w-md lg:max-w-lg mx-auto rounded-[2.5rem] p-2 bg-gradient-to-b from-zinc-200 to-white shadow-2xl border border-zinc-200/60 overflow-visible"
           >
             <img
               src={heroImage}
               alt="Elixir Aesthetics clinic interior"
-              className="w-full h-[360px] lg:h-[540px] object-cover rounded-[2rem] transition-all duration-700 hover:scale-[1.02] shadow-2xl"
+              className="w-full h-[320px] lg:h-[520px] object-cover rounded-[2rem] transition-all duration-700 hover:scale-[1.02] shadow-2xl"
             />
 
             {/* Floating badge — Google rating (top-left) */}

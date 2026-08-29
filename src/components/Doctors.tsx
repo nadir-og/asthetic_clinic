@@ -3,13 +3,13 @@ import React from 'react';
 const Doctors = () => {
   return (
     <section className="pt-24 pb-16 bg-[#FDFCFB]" id="doctors">
-       <div className="max-w-5xl mx-auto px-6 mb-16 text-center">
+       <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-16 text-center">
          <span className="uppercase tracking-widest text-[10px] font-bold text-zinc-500 mb-3 block">The Medical Team</span>
          <h2 className="font-serif text-4xl lg:text-5xl font-bold text-zinc-950 mb-4 tracking-tight">The specialists behind Aura.</h2>
          <p className="text-zinc-600 max-w-xl mx-auto text-sm md:text-base leading-relaxed">A senior board-certified team that stays close to every clinical protocol and patient transformation.</p>
        </div>
 
-       <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+       <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           
           {/* Doctor 1 */}
           <div className="bg-white rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group border border-zinc-100/50">
