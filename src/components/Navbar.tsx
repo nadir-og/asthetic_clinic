@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, LayoutGroup, AnimatePresence } from 'framer-motion';
-import { Phone, Menu, X, MessageCircle } from 'lucide-react';
+import { Phone, MessageCircle } from 'lucide-react';
 import { clinic, navLinks } from '@/data/clinicData';
 import { waPrivilegeLink, telLink } from '@/lib/whatsapp';
 
@@ -37,8 +37,8 @@ export default function Navbar() {
       e.preventDefault();
       const targetSelector = href === '#' ? 'body' : href;
       const target = document.querySelector(targetSelector);
-      if (target && (window as any).lenis) {
-        (window as any).lenis.scrollTo(target, {
+      if (window.lenis) {
+        window.lenis.scrollTo(targetSelector, {
           offset: href === '#' ? 0 : -80,
           duration: 1.2,
           easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easeOutExpo

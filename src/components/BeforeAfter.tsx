@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, LayoutGroup } from 'framer-motion';
-import { MoveHorizontal, FileText, Info, Sparkles } from 'lucide-react';
+import { MoveHorizontal, FileText, Info } from 'lucide-react';
 import { beforeAfterCases } from '@/data/clinicData';
 export default function BeforeAfter() {
   const [activeCase, setActiveCase] = useState(0);
@@ -131,7 +131,7 @@ export default function BeforeAfter() {
 
         {/* Tab Switcher */}
         <div className="flex justify-center mb-8 w-full px-6 md:px-0">
-          <div className="flex flex-wrap justify-center gap-2 p-1.5 max-w-full relative md:inline-flex md:items-center md:bg-stone-100/80 md:backdrop-blur-md md:rounded-full md:border md:border-stone-200/80">
+          <div className="grid grid-cols-2 gap-2 p-1.5 w-full max-w-sm mx-auto relative md:flex md:inline-flex md:items-center md:bg-stone-100/80 md:backdrop-blur-md md:rounded-full md:border md:border-stone-200/80 md:w-auto md:max-w-full">
             <LayoutGroup id="before-after-filters">
               {beforeAfterCases.map((c, i) => {
                 const isActive = activeCase === i;
@@ -196,6 +196,8 @@ export default function BeforeAfter() {
               <img
                 src={currentCase.afterImage}
                 alt="After clinical treatment"
+                width={800}
+                height={600}
                 loading="lazy"
                 decoding="async"
                 className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[700ms]"
@@ -210,6 +212,8 @@ export default function BeforeAfter() {
                 <img
                   src={currentCase.beforeImage}
                   alt="Before clinical treatment"
+                  width={800}
+                  height={600}
                   loading="lazy"
                   decoding="async"
                   className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[700ms]"

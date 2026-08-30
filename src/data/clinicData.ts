@@ -84,8 +84,7 @@ export const heroStats = [
   { value: 'Specialist', label: 'Doctors' },
 ];
 
-export const heroImage =
-  'https://images.pexels.com/photos/16571735/pexels-photo-16571735.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80';
+export const heroImage = '/images/hero.webp';
 
 // ------------------------------------------------------------------- Services
 export const services: Service[] = [
@@ -105,8 +104,7 @@ export const services: Service[] = [
       'Instant visible glow',
       'Suitable for all skin types',
     ],
-    image:
-      'https://images.pexels.com/photos/9775369/pexels-photo-9775369.jpeg?auto=compress&cs=tinysrgb&w=800&q=75',
+    image: '/images/service_hydra.webp',
   },
   {
     id: 'acne-scar',
@@ -124,8 +122,7 @@ export const services: Service[] = [
       'Smoother skin texture',
       'Visible results in 3 sessions',
     ],
-    image:
-      'https://images.pexels.com/photos/7789649/pexels-photo-7789649.jpeg?auto=compress&cs=tinysrgb&w=800&q=75',
+    image: '/images/service_carbon.webp',
   },
   {
     id: 'hair-restoration',
@@ -143,8 +140,7 @@ export const services: Service[] = [
       'Visible density in 6 weeks',
       'Minimal discomfort',
     ],
-    image:
-      'https://images.pexels.com/photos/28994563/pexels-photo-28994563.jpeg?auto=compress&cs=tinysrgb&w=800&q=75',
+    image: '/images/service_prp_hair.webp',
   },
   {
     id: 'laser-hair-removal',
@@ -162,8 +158,7 @@ export const services: Service[] = [
       'Permanent hair reduction',
       'Painless cooling tip',
     ],
-    image:
-      'https://images.pexels.com/photos/4586726/pexels-photo-4586726.jpeg?auto=compress&cs=tinysrgb&w=800&q=75',
+    image: '/images/service_laser_hair.webp',
   },
   {
     id: 'chemical-peel',
@@ -181,8 +176,7 @@ export const services: Service[] = [
       'Renews skin surface',
       'Even, radiant complexion',
     ],
-    image:
-      'https://images.pexels.com/photos/6663600/pexels-photo-6663600.jpeg?auto=compress&cs=tinysrgb&w=800&q=75',
+    image: '/images/service_chemical_peel.webp',
   },
   {
     id: 'tattoo-removal',
@@ -200,8 +194,7 @@ export const services: Service[] = [
       'Progressive fading',
       'Safe on all ink colours',
     ],
-    image:
-      'https://images.pexels.com/photos/7108227/pexels-photo-7108227.jpeg?auto=compress&cs=tinysrgb&w=800&q=75',
+    image: '/images/service_microneedling.webp',
   },
 ];
 
@@ -262,10 +255,10 @@ export const bundles: Bundle[] = [
 export const beforeAfterCases: BeforeAfterCase[] = [
   {
     id: 'hair-density',
-    category: 'Hair Density',
+    category: 'Hair & Scalp',
     title: 'Crown & Hairline Follicular Density Restoration',
-    beforeImage: '/images/hair_before.jpg',
-    afterImage: '/images/hair_after.jpg',
+    beforeImage: '/images/hair_before.webp',
+    afterImage: '/images/hair_after.webp',
     caseNote:
       'Male patient presenting with diffuse crown thinning and receding frontal hairline. Underwent 6 sessions of GFC + Autologous PRP protocol over 14 weeks. High follicular density restoration observed with zero surgical downtime.',
     disclaimer: 'Clinical photographic documentation of patient response at 14 weeks',
@@ -280,10 +273,10 @@ export const beforeAfterCases: BeforeAfterCase[] = [
   },
   {
     id: 'acne-scar',
-    category: 'Acne Scars & Texture',
+    category: 'Skin Resurfacing',
     title: 'Deep Rolling Acne Scar & Texture Resurfacing',
-    beforeImage: '/images/acne_face_after.jpg',
-    afterImage: '/images/acne_face_after.jpg',
+    beforeImage: '/images/acne_face_after.webp',
+    afterImage: '/images/acne_face_after.webp',
     caseNote:
       'Close-up bilateral cheek profile with active erythema and grade-3 atrophic rolling acne scars. Treated with 4 sessions of Fractional Erbium-Glass Laser combined with cross-linked HA hydration. 78% depth reduction with radiant glass skin outcome.',
     disclaimer: 'Clinical photographic documentation under uniform medical lighting',
@@ -298,10 +291,10 @@ export const beforeAfterCases: BeforeAfterCase[] = [
   },
   {
     id: 'skin-radiance',
-    category: 'Pigmentation & Melasma',
+    category: 'Facial Glow',
     title: 'Dermal Melasma & Epidermal Tone Harmonization',
-    beforeImage: '/images/melasma_face_after.jpg',
-    afterImage: '/images/melasma_face_after.jpg',
+    beforeImage: '/images/melasma_face_after.webp',
+    afterImage: '/images/melasma_face_after.webp',
     caseNote:
       'Patient treated with dermatologist-formulated medical TCA depigmenting peel series and clinical antioxidant infusion. Deep melanin dispersion with even luminous skin tone.',
     disclaimer: 'Clinical photographic representation of results',
@@ -316,10 +309,10 @@ export const beforeAfterCases: BeforeAfterCase[] = [
   },
   {
     id: 'tattoo-removal',
-    category: 'Laser Tattoo Fading',
+    category: 'Laser & Tattoo',
     title: 'Picosecond Laser Dermal Pigment Clearance',
-    beforeImage: '/images/tattoo_before.jpg',
-    afterImage: '/images/tattoo_after.jpg',
+    beforeImage: '/images/tattoo_before.webp',
+    afterImage: '/images/tattoo_after.webp',
     caseNote:
       'Targeted high-intensity picosecond Nd:YAG laser pulses shattering deep black ink particles into microscopic fragments cleared naturally via lymphatic drainage without dermal scarring.',
     disclaimer: 'Clinical photographic representation of results',
@@ -343,8 +336,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     review:
       'I have never seen my skin glow like this before. The hydra facial was so relaxing and the results were instant. Worth every penny, especially with the seasonal privilege deal!',
-    avatar:
-      'https://images.pexels.com/photos/1820575/pexels-photo-1820575.jpeg?auto=compress&cs=tinysrgb&w=200&q=75',
+    avatar: '/images/avatar_1.webp',
     verified: true,
   },
   {
@@ -354,8 +346,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     review:
       'After 6 sessions of GFC therapy my hair density is visibly better. The doctors are highly professional and explain everything clearly. Highly recommend Aura Aesthetics.',
-    avatar:
-      'https://images.pexels.com/photos/16160809/pexels-photo-16160809.jpeg?auto=compress&cs=tinysrgb&w=200&q=75',
+    avatar: '/images/avatar_2.webp',
     verified: true,
   },
   {
@@ -365,8 +356,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     review:
       'My acne scars were something I was very conscious about. After 4 sessions at Aura, the difference is remarkable. My skin feels smooth and confident again.',
-    avatar:
-      'https://images.pexels.com/photos/14156484/pexels-photo-14156484.jpeg?auto=compress&cs=tinysrgb&w=200&q=75',
+    avatar: '/images/avatar_3.webp',
     verified: true,
   },
   {
@@ -376,8 +366,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     review:
       'Best decision I made! The laser sessions were painless and the staff made me feel so comfortable. Permanent results are showing already after 3 sessions.',
-    avatar:
-      'https://images.pexels.com/photos/16160801/pexels-photo-16160801.jpeg?auto=compress&cs=tinysrgb&w=200&q=75',
+    avatar: '/images/avatar_4.webp',
     verified: true,
   },
   {
@@ -387,8 +376,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     review:
       'The clinical protocol was incredible. My skin texture has completely transformed. The medical team genuinely cares about scientific results.',
-    avatar:
-      'https://images.pexels.com/photos/1820559/pexels-photo-1820559.jpeg?auto=compress&cs=tinysrgb&w=200&q=75',
+    avatar: '/images/avatar_5.webp',
     verified: true,
   },
   {
@@ -398,8 +386,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     review:
       'My pigmentation has faded so much after the chemical peel sessions. The doctors at Aura are true specialists — they assessed my skin thoroughly before starting.',
-    avatar:
-      'https://images.pexels.com/photos/34761515/pexels-photo-34761515.jpeg?auto=compress&cs=tinysrgb&w=200&q=75',
+    avatar: '/images/avatar_6.webp',
     verified: true,
   },
 ];

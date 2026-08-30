@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { MapPin, Clock, Phone, Navigation, ExternalLink } from 'lucide-react';
 import { clinic } from '@/data/clinicData';
 import { telLink, mapsLink, mapsEmbedUrl } from '@/lib/whatsapp';
@@ -34,6 +35,9 @@ function isClinicOpen(): { isOpen: boolean; text: string } {
 }
 
 export default function Location() {
+  const mapRef = useRef<HTMLDivElement>(null);
+  const isMapInView = useInView(mapRef, { once: true, margin: '300px' });
+
   return (
     <section id="location" className="relative py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -63,21 +67,28 @@ export default function Location() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
           {/* Map card */}
           <motion.div
+            ref={mapRef}
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="relative rounded-3xl overflow-hidden bg-white border border-zinc-200 p-2 shadow-sm"
           >
-            <div className="relative w-full h-full min-h-[320px] sm:min-h-[400px] rounded-2xl overflow-hidden">
-              <iframe
-                src={mapsEmbedUrl()}
-                className="absolute inset-0 w-full h-full"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Clinic location on Google Maps"
-              />
+            <div className="relative w-full h-full min-h-[320px] sm:min-h-[400px] rounded-2xl overflow-hidden bg-stone-100">
+              {isMapInView ? (
+                <iframe
+                  src={mapsEmbedUrl()}
+                  className="absolute inset-0 w-full h-full"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Clinic location on Google Maps"
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center text-zinc-400 text-xs uppercase tracking-widest font-semibold">
+                  <span>Loading Map...</span>
+                </div>
+              )}
             </div>
           </motion.div>
 

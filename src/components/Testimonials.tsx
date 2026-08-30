@@ -16,11 +16,6 @@ function RollingCounter({ target, suffix, isDecimal = false, duration = 1500 }: 
   const isInView = useInView(ref, { once: true, margin: '-50px' });
 
   useEffect(() => {
-    const isTouch = window.matchMedia('(pointer: coarse)').matches;
-    if (isTouch) {
-      setCount(target);
-      return;
-    }
     if (!isInView) return;
 
     let startTime: number | null = null;
@@ -59,22 +54,10 @@ function RollingCounter({ target, suffix, isDecimal = false, duration = 1500 }: 
 }
 
 export default function Testimonials() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
   const isTouch = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        observer.disconnect();
-      }
-    }, { threshold: 0.1 });
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
 
   return (
-    <section id="reviews" ref={sectionRef} className="relative py-16 lg:py-24">
+    <section id="reviews" className="relative py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <motion.div
@@ -163,6 +146,8 @@ export default function Testimonials() {
                 <img
                   src={t.avatar}
                   alt={t.name}
+                  width={40}
+                  height={40}
                   loading="lazy"
                   decoding="async"
                   className="h-10 w-10 rounded-full object-cover"

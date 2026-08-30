@@ -143,8 +143,8 @@ export default function Hero() {
                 onClick={(e) => {
                   e.preventDefault();
                   const target = document.querySelector('#treatments');
-                  if (target && (window as any).lenis) {
-                    (window as any).lenis.scrollTo(target, { offset: -80, duration: 1.2 });
+                  if (window.lenis) {
+                    window.lenis.scrollTo('#treatments', { offset: -80, duration: 1.2 });
                   } else if (target) {
                     target.scrollIntoView({ behavior: 'smooth' });
                   }
@@ -171,7 +171,11 @@ export default function Hero() {
           >
             <img
               src={heroImage}
-              alt="Elixir Aesthetics clinic interior"
+              alt="Aura Medical Aesthetics clinic interior"
+              fetchPriority="high"
+              decoding="async"
+              width={600}
+              height={520}
               className="w-full h-[320px] lg:h-[400px] xl:h-[520px] object-cover rounded-[2rem] transition-all duration-700 hover:scale-[1.02] shadow-2xl"
             />
 

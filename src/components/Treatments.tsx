@@ -91,7 +91,7 @@ export default function Treatments() {
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-6"
       >
         <AnimatePresence mode="popLayout">
-          {filtered.map((service, idx) => {
+          {filtered.map((service) => {
             const discount = Math.round(
               ((service.originalPrice - service.salePrice) / service.originalPrice) * 100
             );
@@ -121,6 +121,8 @@ export default function Treatments() {
                     <img
                       src={service.image}
                       alt={service.title}
+                      width={600}
+                      height={384}
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-105"

@@ -1,18 +1,19 @@
-import { useEffect } from 'react';
-import Lenis from 'lenis';
+import { useEffect, lazy, Suspense } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { waPrivilegeLink } from '@/lib/whatsapp';
 import AmbientBackground from '@/components/AmbientBackground';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import Doctors from '@/components/Doctors';
-import Treatments from '@/components/Treatments';
-import BeforeAfter from '@/components/BeforeAfter';
-import MedicalVsSalon from '@/components/MedicalVsSalon';
-import Testimonials from '@/components/Testimonials';
-import Location from '@/components/Location';
-import FAQ from '@/components/FAQ';
-import Footer from '@/components/Footer';
+
+// Code-split below-the-fold sections to drastically reduce initial JS bundle size
+const Doctors = lazy(() => import('@/components/Doctors'));
+const Treatments = lazy(() => import('@/components/Treatments'));
+const BeforeAfter = lazy(() => import('@/components/BeforeAfter'));
+const MedicalVsSalon = lazy(() => import('@/components/MedicalVsSalon'));
+const Testimonials = lazy(() => import('@/components/Testimonials'));
+const Location = lazy(() => import('@/components/Location'));
+const FAQ = lazy(() => import('@/components/FAQ'));
+const Footer = lazy(() => import('@/components/Footer'));
 
 function App() {
   useEffect(() => {
@@ -26,25 +27,32 @@ function App() {
       return;
     }
 
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // premium easeOutExpo curve
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 1.5,
-    });
-
+    let lenisInstance: Window['lenis'] = null;
     let rafId: number;
-    function raf(time: number) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
-    rafId = requestAnimationFrame(raf);
 
-    // Expose lenis instance globally for section transitions
-    (window as any).lenis = lenis;
+    // Dynamically import Lenis only for non-touch desktop clients
+    import('lenis').then(({ default: Lenis }) => {
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // premium easeOutExpo curve
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1.0,
+        touchMultiplier: 1.5,
+      });
+
+      lenisInstance = lenis;
+
+      function raf(time: number) {
+        lenis.raf(time);
+        rafId = requestAnimationFrame(raf);
+      }
+      rafId = requestAnimationFrame(raf);
+
+      // Expose lenis instance globally for section transitions
+      window.lenis = lenis;
+    });
 
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
@@ -52,14 +60,11 @@ function App() {
     window.scrollTo(0, 0);
 
     return () => {
-      cancelAnimationFrame(rafId);
-      lenis.destroy();
-      (window as any).lenis = null;
+      if (rafId) cancelAnimationFrame(rafId);
+      if (lenisInstance) lenisInstance.destroy();
+      window.lenis = null;
     };
   }, []);
-
-
-
 
   return (
     <div className="bg-[#FDFCFB] text-zinc-900 min-h-screen relative w-full pt-[80px]">
@@ -67,15 +72,19 @@ function App() {
       <Navbar />
       <main className="w-full overflow-x-hidden">
         <Hero />
-        <Doctors />
-        <Treatments />
-        <BeforeAfter />
-        <MedicalVsSalon />
-        <Testimonials />
-        <Location />
-        <FAQ />
+        <Suspense fallback={null}>
+          <Doctors />
+          <Treatments />
+          <BeforeAfter />
+          <MedicalVsSalon />
+          <Testimonials />
+          <Location />
+          <FAQ />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
 
       {/* Floating Interactive WhatsApp Pop-Up Widget */}
       <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-3">

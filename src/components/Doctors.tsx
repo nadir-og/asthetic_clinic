@@ -29,7 +29,7 @@ const Doctors = () => {
             className="bg-white rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group border border-zinc-100/50 cursor-pointer"
           >
             <div className="w-full aspect-square sm:aspect-[4/3] bg-zinc-100 relative overflow-hidden shrink-0">
-              <img src="/images/doctor_farrukh.jpg" alt="Dr. Farrukh Shahzad" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-[800ms] ease-out group-hover:scale-105" />
+              <img src="/images/doctor_farrukh.webp" alt="Dr. Farrukh Shahzad" width={600} height={450} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-[800ms] ease-out group-hover:scale-105" />
             </div>
             <div className="p-8 flex flex-col bg-white">
               <div className="flex flex-col lg:flex-row lg:justify-between lg:items-baseline gap-1 lg:gap-0 mb-4">
@@ -58,7 +58,7 @@ const Doctors = () => {
             className="bg-white rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group border border-zinc-100/50 cursor-pointer"
           >
             <div className="w-full aspect-square sm:aspect-[4/3] bg-zinc-100 relative overflow-hidden shrink-0">
-              <img src="/images/doctor_amna.jpg" alt="Dr. Amna Farrukh" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-[center_35%] transition-transform duration-[800ms] ease-out group-hover:scale-105" />
+              <img src="/images/doctor_amna.webp" alt="Dr. Amna Farrukh" width={600} height={450} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-[center_35%] transition-transform duration-[800ms] ease-out group-hover:scale-105" />
             </div>
             <div className="p-8 flex flex-col bg-white">
               <div className="flex flex-col lg:flex-row lg:justify-between lg:items-baseline gap-1 lg:gap-0 mb-4">
