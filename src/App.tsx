@@ -61,7 +61,13 @@ function App() {
     }
     window.scrollTo(0, 0);
 
+    // Prefetch below-the-fold Location component during browser idle time
+    const prefetchTimer = setTimeout(() => {
+      import('@/components/Location');
+    }, 1000);
+
     return () => {
+      clearTimeout(prefetchTimer);
       if (rafId) cancelAnimationFrame(rafId);
       if (lenisInstance) lenisInstance.destroy();
       window.lenis = null;

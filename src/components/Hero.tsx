@@ -16,17 +16,27 @@ const phrases = [
   'Permanent Hair Density.',
 ];
 
+const getOptimizedHeroImage = (url: string) => {
+  if (!url) return '/images/hero.webp';
+  if (url.includes('unsplash.com') || url.includes('images.unsplash.com')) {
+    if (!url.includes('auto=format')) {
+      return `${url}${url.includes('?') ? '&' : '?'}auto=format&fit=crop&w=800&q=75`;
+    }
+  }
+  return url;
+};
+
 export default function Hero() {
   const [phraseIndex, setPhraseIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
+  const [currentText, setCurrentText] = useState(phrases[0]);
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const currentPhrase = phrases[phraseIndex];
 
-    // Pause on completed phrase: 2000ms
+    // Pause on completed phrase: 2500ms
     if (!isDeleting && currentText === currentPhrase) {
-      const timeout = setTimeout(() => setIsDeleting(true), 2000);
+      const timeout = setTimeout(() => setIsDeleting(true), 2500);
       return () => clearTimeout(timeout);
     }
 
@@ -170,8 +180,8 @@ export default function Hero() {
             className="lg:col-span-5 relative w-full max-w-md lg:max-w-lg mx-auto rounded-[2.5rem] p-2 bg-gradient-to-b from-zinc-200 to-white shadow-2xl border border-zinc-200/60 overflow-visible"
           >
             <img
-              src={heroImage}
-              srcSet="/images/hero-mobile.webp 480w, /images/hero.webp 1000w"
+              src={getOptimizedHeroImage(heroImage)}
+              srcSet={heroImage.startsWith('/images/') ? "/images/hero-mobile.webp 480w, /images/hero.webp 1000w" : undefined}
               sizes="(max-width: 768px) 100vw, 520px"
               alt="Aura Medical Aesthetics clinic interior"
               loading="eager"

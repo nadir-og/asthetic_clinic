@@ -18,7 +18,7 @@ export default function TypewriterText({
   cursorClassName = 'inline-block w-[2.5px] h-[0.85em] bg-current ml-1.5 align-middle animate-pulse',
 }: TypewriterTextProps) {
   const [wordIndex, setWordIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState('');
+  const [displayedText, setDisplayedText] = useState(words[0] || '');
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {

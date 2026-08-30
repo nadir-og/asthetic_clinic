@@ -51,5 +51,5 @@ export function mapsLink(): string {
 export function mapsEmbedUrl(): string {
   return `https://maps.google.com/maps?q=${encodeURIComponent(
     clinic.mapsQuery
-  )}&output=embed`;
+  )}&t=m&z=14&ie=UTF8&iwloc=&output=embed`;
 }

@@ -16,17 +16,136 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://asthetic-clinic.vercel.app/" />
 
-    <!-- Performance Preconnect & Preload -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="image" href="/images/hero.webp" imagesrcset="/images/hero-mobile.webp 480w, /images/hero.webp 1000w" imagesizes="(max-width: 768px) 100vw, 520px" type="image/webp" fetchpriority="high" />
-    
-    <!-- Google Fonts Non-Blocking -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" />
-    </noscript>
+    <!-- Preload Critical Luxury Webfonts (Zero FOUT / Instant First Paint) -->
+    <link rel="preload" href="/fonts/cormorant-garamond-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/cormorant-garamond-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Critical CSS for Instantaneous First Contentful Paint (FCP) -->
+    <style>
+      /* Cormorant Garamond Font Faces (font-display: block eliminates all fallback flash) */
+      @font-face {
+        font-family: 'Cormorant Garamond';
+        font-style: normal;
+        font-weight: 400;
+        font-display: block;
+        src: url('/fonts/cormorant-garamond-latin-400-normal.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Cormorant Garamond';
+        font-style: italic;
+        font-weight: 400;
+        font-display: block;
+        src: url('/fonts/cormorant-garamond-latin-400-italic.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Cormorant Garamond';
+        font-style: normal;
+        font-weight: 600;
+        font-display: block;
+        src: url('/fonts/cormorant-garamond-latin-600-normal.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Cormorant Garamond';
+        font-style: italic;
+        font-weight: 600;
+        font-display: block;
+        src: url('/fonts/cormorant-garamond-latin-600-italic.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Cormorant Garamond';
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        src: url('/fonts/cormorant-garamond-latin-700-normal.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Cormorant Garamond';
+        font-style: italic;
+        font-weight: 700;
+        font-display: block;
+        src: url('/fonts/cormorant-garamond-latin-700-italic.woff2') format('woff2');
+      }
+
+      /* Inter Font Faces */
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-display: block;
+        src: url('/fonts/inter-latin-400-normal.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-display: block;
+        src: url('/fonts/inter-latin-500-normal.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-display: block;
+        src: url('/fonts/inter-latin-600-normal.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        src: url('/fonts/inter-latin-700-normal.woff2') format('woff2');
+      }
+
+      :root {
+        --champagne: #e8c98a;
+        --champagne-light: #f5e6c8;
+        --gold: #e6c168;
+        --emerald-deep: #064e3b;
+        --emerald-mid: #047857;
+        --emerald-light: #10b981;
+      }
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        background-color: #FDFCFB;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        max-width: 100%;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background-color: #FDFCFB;
+        color: #18181b;
+        overflow-x: hidden;
+        max-width: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .font-serif {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+      }
+      #root {
+        min-height: 100vh;
+        background-color: #FDFCFB;
+      }
+    </style>
+
+    <!-- Hero Image Preload for Instant LCP (< 2.5s on mobile) -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero.webp"
+      imagesrcset="/images/hero-mobile.webp 480w, /images/hero.webp 1000w"
+      imagesizes="(max-width: 768px) 100vw, 520px"
+      type="image/webp"
+      fetchpriority="high"
+    />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
