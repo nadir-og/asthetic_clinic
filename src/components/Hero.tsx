@@ -176,7 +176,7 @@ export default function Hero() {
             />
 
             {/* Floating badge — Google rating (top-left) */}
-            <div className="animate-bounce [animation-duration:3.5s] absolute left-2 top-2 lg:-top-4 lg:-left-6 bg-white/95 backdrop-blur-xl border border-zinc-200/90 px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2.5 z-20">
+            <div className="animate-bounce [animation-duration:3.5s] absolute left-2 top-2 lg:-top-4 lg:-left-6 bg-white border border-zinc-200/90 px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2.5 z-20">
               <div className="flex items-center justify-center h-8 w-8 rounded-full bg-zinc-100 border border-zinc-200 flex-shrink-0">
                 <BadgeCheck className="h-4 w-4 text-zinc-950" />
               </div>
@@ -187,7 +187,7 @@ export default function Hero() {
             </div>
 
             {/* Floating badge — 50% OFF (bottom-right) */}
-            <div className="animate-pulse [animation-duration:4s] absolute right-2 bottom-2 lg:-bottom-4 lg:-right-4 bg-white/95 backdrop-blur-xl border border-zinc-200/90 px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2.5 z-20">
+            <div className="animate-pulse [animation-duration:4s] absolute right-2 bottom-2 lg:-bottom-4 lg:-right-4 bg-white border border-zinc-200/90 px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2.5 z-20">
               <div className="flex items-center justify-center h-8 w-8 rounded-full bg-zinc-100 border border-zinc-200 flex-shrink-0">
                 <span className="text-xs font-bold text-zinc-950">%</span>
               </div>

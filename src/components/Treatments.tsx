@@ -17,15 +17,14 @@ const words = [
   'Laser Therapies',
   'Hair Restorations',
 ];
-
 export default function Treatments() {
   const [activeFilter, setActiveFilter] = useState<string>('All');
+  const isTouch = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
 
   const filtered =
     activeFilter === 'All'
       ? services
       : services.filter((s) => s.category === activeFilter);
-
   return (
     <section id="treatments" className="pt-16 pb-24 lg:pt-24 bg-white">
       {/* Section header */}
@@ -104,7 +103,7 @@ export default function Treatments() {
                 whileInView={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 viewport={{ once: true, margin: '-50px' }}
-                whileHover={{ y: -8 }}
+                whileHover={isTouch ? {} : { y: -8 }}
                 transition={{ 
                   type: 'spring', 
                   stiffness: 120, 

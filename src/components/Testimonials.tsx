@@ -16,6 +16,11 @@ function RollingCounter({ target, suffix, isDecimal = false, duration = 1500 }: 
   const isInView = useInView(ref, { once: true, margin: '-50px' });
 
   useEffect(() => {
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    if (isTouch) {
+      setCount(target);
+      return;
+    }
     if (!isInView) return;
 
     let startTime: number | null = null;
@@ -56,6 +61,7 @@ function RollingCounter({ target, suffix, isDecimal = false, duration = 1500 }: 
 export default function Testimonials() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const isTouch = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
@@ -127,7 +133,7 @@ export default function Testimonials() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
-              whileHover={{ y: -6 }}
+              whileHover={isTouch ? {} : { y: -6 }}
               transition={{ 
                 type: 'spring', 
                 stiffness: 120, 

@@ -6,6 +6,7 @@ export default function BeforeAfter() {
   const [activeCase, setActiveCase] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
+  const isTouch = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
 
   const currentCase = beforeAfterCases[activeCase];
 
@@ -261,7 +262,7 @@ export default function BeforeAfter() {
               className="lg:h-full lg:flex lg:flex-col lg:flex-1"
             >
             <motion.div 
-              whileHover={{ y: -6 }}
+              whileHover={isTouch ? {} : { y: -6 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               className="bg-white border border-zinc-200/80 rounded-[2rem] p-6 lg:p-8 shadow-sm hover:shadow-xl flex flex-col justify-between lg:h-full lg:flex-1 cursor-pointer"
             >

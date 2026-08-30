@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 
 export default function AmbientBackground() {
+  const isTouch = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       {/* Base gradient canvas */}
@@ -14,7 +16,7 @@ export default function AmbientBackground() {
 
       {/* Soft drifting ambient botanical orb */}
       <motion.div
-        animate={{
+        animate={isTouch ? {} : {
           x: [0, 30, -15, 0],
           y: [0, -20, 15, 0],
           scale: [1, 1.03, 0.97, 1],

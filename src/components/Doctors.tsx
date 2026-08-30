@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Doctors = () => {
+  const isTouch = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+
   return (
     <section className="pt-24 pb-16 lg:pb-24 bg-[#FDFCFB]" id="doctors">
        <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-16 text-center">
@@ -17,7 +19,7 @@ const Doctors = () => {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
-            whileHover={{ y: -6 }}
+            whileHover={isTouch ? {} : { y: -6 }}
             transition={{ 
               type: 'spring', 
               stiffness: 120, 
@@ -45,7 +47,7 @@ const Doctors = () => {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
-            whileHover={{ y: -6 }}
+            whileHover={isTouch ? {} : { y: -6 }}
             transition={{ 
               type: 'spring', 
               stiffness: 120, 
