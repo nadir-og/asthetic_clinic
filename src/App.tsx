@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { MessageCircle } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 import { waPrivilegeLink } from '@/lib/whatsapp';
 import AmbientBackground from '@/components/AmbientBackground';
 import AnnouncementBar from '@/components/AnnouncementBar';
@@ -78,6 +79,7 @@ function App() {
           <MessageCircle className="h-6 w-6 fill-white/20 relative z-10" />
         </a>
       </div>
+      <Analytics />
     </div>
   );
 }
