@@ -43,6 +43,7 @@ export interface BeforeAfterCase {
   fitzpatrick: string;
   sessions: string;
   parameter: string;
+  observations?: string[];
 }
 
 export interface Testimonial {
@@ -271,6 +272,11 @@ export const beforeAfterCases: BeforeAfterCase[] = [
     fitzpatrick: 'Fitzpatrick Type IV',
     sessions: '6 Sessions (GFC + PRP)',
     parameter: 'Autologous GFC + 1540nm Scalp Laser',
+    observations: [
+      '85% hair count density improvement at 14 weeks',
+      'Significant follicular reactivation in temporal recessions',
+      'No side effects, zero surgical downtime reported',
+    ],
   },
   {
     id: 'acne-scar',
@@ -284,6 +290,11 @@ export const beforeAfterCases: BeforeAfterCase[] = [
     fitzpatrick: 'Fitzpatrick Type III',
     sessions: '4 Sessions',
     parameter: '1540nm Fractional Er:Glass + Medical Peel',
+    observations: [
+      '78% reduction in rolling acne scar depth',
+      'Dermal collagen remodeling with skin texture refinement',
+      'Enhanced epidermal luminosity and skin barrier strength',
+    ],
   },
   {
     id: 'skin-radiance',
@@ -297,6 +308,11 @@ export const beforeAfterCases: BeforeAfterCase[] = [
     fitzpatrick: 'Fitzpatrick Type IV',
     sessions: '3 Sessions',
     parameter: 'Medical Depigmentation Protocol',
+    observations: [
+      '90% epidermal melanin clearance observed',
+      'Hyperpigmentation index reduction across cheek boundaries',
+      'Even-toned, glowing dermal appearance with antioxidant boost',
+    ],
   },
   {
     id: 'tattoo-removal',
@@ -310,6 +326,11 @@ export const beforeAfterCases: BeforeAfterCase[] = [
     fitzpatrick: 'Fitzpatrick Type III / IV',
     sessions: '5 Sessions',
     parameter: 'Picosecond Nd:YAG 1064nm Laser',
+    observations: [
+      '95% ink clearance with picosecond laser technology',
+      'Clean dermal clearing without thermal or scarring damage',
+      'Dermal health fully preserved after 5 sessions',
+    ],
   },
 ];
 

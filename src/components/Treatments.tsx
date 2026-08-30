@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import {
   Clock,
   MessageCircle,
@@ -27,14 +27,14 @@ export default function Treatments() {
       : services.filter((s) => s.category === activeFilter);
 
   return (
-    <section id="treatments" className="pt-16 pb-24 bg-white">
+    <section id="treatments" className="pt-16 pb-24 lg:pt-24 bg-white">
       {/* Section header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.6 }}
-        className="max-w-7xl mx-auto px-6 pt-12 pb-8 text-center"
+        className="max-w-7xl mx-auto px-6 pt-12 lg:pt-0 pb-0 sm:pb-8 text-center"
       >
         <div className="inline-flex items-center gap-2 bg-transparent text-xs uppercase tracking-[0.2em] text-zinc-500 mb-6 mx-auto">
           <Sparkles className="h-3.5 w-3.5 text-zinc-950" />
@@ -42,41 +42,55 @@ export default function Treatments() {
         </div>
 
         {/* Auto-typing headline */}
-        <h2 className="font-serif text-4xl lg:text-5xl font-bold text-zinc-950 text-center mb-4 leading-tight tracking-tight flex items-center justify-center flex-wrap">
+        <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-950 text-center mb-4 leading-tight tracking-tight flex flex-col sm:flex-row items-center sm:justify-center lg:items-baseline lg:justify-center">
           <span>Signature&nbsp;</span>
-          <TypewriterText words={words} className="text-zinc-950" cursorClassName="border-r-2 border-zinc-950 ml-1 inline-block h-8 lg:h-10 align-middle" />
+          <span className="inline-block text-amber-800 min-h-[1.2em]">
+            <TypewriterText words={words} className="text-amber-800" cursorClassName="border-r-2 border-zinc-950 ml-1 inline-block h-6 sm:h-8 lg:h-10 align-middle" />
+          </span>
         </h2>
 
-        <p className="font-sans text-sm md:text-base text-zinc-600 max-w-xl mx-auto text-center mb-12 leading-relaxed">
+        <p className="font-sans text-sm md:text-base text-zinc-600 max-w-xl mx-auto text-center mb-8 sm:mb-10 leading-relaxed">
           Each treatment is performed by specialist doctors using FDA-cleared technology.
           Claim your seasonal privilege deal via WhatsApp.
         </p>
       </motion.div>
 
       {/* Interactive Filter Tabs */}
-      <div className="flex justify-center mb-10">
-        <div className="inline-flex items-center justify-center p-1.5 bg-stone-100/80 backdrop-blur-md rounded-full border border-stone-200/80 mb-10 overflow-x-auto max-w-full no-scrollbar">
-          {filterTabs.map((tab) => {
-            const isActive = activeFilter === tab;
-            return (
-              <button
-                key={tab}
-                onClick={() => setActiveFilter(tab)}
-                className={
-                  isActive
-                    ? 'bg-zinc-950 text-white shadow-sm px-5 py-2 rounded-full text-xs font-semibold transition-all duration-300 whitespace-nowrap'
-                    : 'text-stone-600 hover:text-zinc-950 hover:bg-white/60 px-4 py-2 rounded-full text-xs font-medium transition-all duration-200 whitespace-nowrap'
-                }
-              >
-                {tab}
-              </button>
-            );
-          })}
+      <div className="flex justify-center mb-8 w-full px-6 md:px-0">
+        <div className="flex flex-wrap justify-center gap-2 p-1.5 max-w-full relative md:inline-flex md:items-center md:bg-stone-100/80 md:backdrop-blur-md md:rounded-full md:border md:border-stone-200/80">
+          <LayoutGroup id="treatment-filters">
+            {filterTabs.map((tab) => {
+              const isActive = activeFilter === tab;
+              return (
+                <button
+                  key={tab}
+                  onClick={() => setActiveFilter(tab)}
+                  className={`relative px-5 py-2 rounded-full text-xs font-semibold transition-colors duration-350 ease-out whitespace-nowrap z-10 ${
+                    isActive
+                      ? 'text-white'
+                      : 'text-stone-600 bg-stone-100 border border-stone-200/60 hover:text-zinc-950 hover:bg-stone-200/60 md:bg-transparent md:border-none'
+                  }`}
+                >
+                  {tab}
+                  {isActive && (
+                    <motion.span
+                      layoutId="active-treatment-tab"
+                      className="absolute inset-0 bg-zinc-950 rounded-full -z-10 shadow-sm"
+                      transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </LayoutGroup>
         </div>
       </div>
 
       {/* Cards grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-6">
+      <motion.div
+        layout
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-6"
+      >
         <AnimatePresence mode="popLayout">
           {filtered.map((service, idx) => {
             const discount = Math.round(
@@ -85,12 +99,19 @@ export default function Treatments() {
             return (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 45 }}
+                layout
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="group relative bg-white border border-zinc-100 shadow-[0_8px_30px_rgb(0,0,0,0.015)] rounded-3xl p-5 hover:shadow-[0_20px_40px_rgba(139,92,26,0.05)] hover:border-amber-500/25 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between overflow-hidden transform-gpu will-change-transform"
+                exit={{ opacity: 0, scale: 0.95 }}
+                viewport={{ once: true, margin: '-50px' }}
+                whileHover={{ y: -8 }}
+                transition={{ 
+                  type: 'spring', 
+                  stiffness: 120, 
+                  damping: 18, 
+                  opacity: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+                }}
+                className="group relative bg-white border border-zinc-100 shadow-[0_8px_30px_rgb(0,0,0,0.015)] rounded-3xl p-5 hover:shadow-[0_20px_40px_rgba(139,92,26,0.05)] hover:border-amber-500/25 flex flex-col justify-between overflow-hidden transform-gpu"
               >
                 {/* Subtle gold sheen hover glow */}
                 <div className="absolute -top-12 -right-12 w-28 h-28 bg-amber-200/20 rounded-full blur-2xl pointer-events-none group-hover:scale-150 transition-all duration-500"></div>
@@ -101,7 +122,9 @@ export default function Treatments() {
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
@@ -149,11 +172,13 @@ export default function Treatments() {
                     </span>
                   </div>
 
-                  <a
+                  <motion.a
                     href={waServiceLink(service.title, service.salePrice)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative overflow-hidden bg-zinc-950 text-white text-xs font-semibold px-5 py-2.5 rounded-full flex items-center gap-1.5 shadow-sm border border-zinc-950 transition-all duration-300 active:scale-95 whitespace-nowrap group/btn"
+                    whileHover={{ y: -1, scale: 1.02 }}
+                    whileTap={{ scale: 0.96 }}
+                    className="relative overflow-hidden bg-zinc-950 text-white text-xs font-semibold px-5 py-2.5 rounded-full flex items-center gap-1.5 shadow-sm border border-zinc-950 transition-all duration-300 whitespace-nowrap group/btn"
                   >
                     <span className="absolute inset-0 bg-white rounded-t-[100%] translate-y-[102%] group-hover/btn:translate-y-0 group-hover/btn:rounded-none transition-all duration-500 ease-out pointer-events-none" />
                     <span className="relative z-10 flex items-center gap-1.5 text-white group-hover/btn:text-zinc-950 transition-colors duration-500">
@@ -161,13 +186,13 @@ export default function Treatments() {
                       <span>Claim Deal</span>
                       <ArrowRight className="h-3 w-3 transition-transform group-hover/btn:translate-x-0.5" />
                     </span>
-                  </a>
+                  </motion.a>
                 </div>
               </motion.div>
             );
           })}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </section>
   );
 }

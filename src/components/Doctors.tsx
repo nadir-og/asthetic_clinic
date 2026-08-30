@@ -3,29 +3,35 @@ import { motion } from 'framer-motion';
 
 const Doctors = () => {
   return (
-    <section className="pt-24 pb-16 bg-[#FDFCFB]" id="doctors">
+    <section className="pt-24 pb-16 lg:pb-24 bg-[#FDFCFB]" id="doctors">
        <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-16 text-center">
          <span className="uppercase tracking-widest text-[10px] font-bold text-zinc-500 mb-3 block">The Medical Team</span>
          <h2 className="font-serif text-4xl lg:text-5xl font-bold text-zinc-950 mb-4 tracking-tight">The specialists behind Aura.</h2>
          <p className="text-zinc-600 max-w-xl mx-auto text-sm md:text-base leading-relaxed">A senior board-certified team that stays close to every clinical protocol and patient transformation.</p>
        </div>
 
-       <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           
           {/* Doctor 1 */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-white rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group border border-zinc-100/50"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            whileHover={{ y: -6 }}
+            transition={{ 
+              type: 'spring', 
+              stiffness: 120, 
+              damping: 18, 
+              opacity: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
+            }}
+            className="bg-white rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group border border-zinc-100/50 cursor-pointer"
           >
             <div className="w-full aspect-square sm:aspect-[4/3] bg-zinc-100 relative overflow-hidden shrink-0">
-              <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=800&auto=format&fit=crop" alt="Dr. Farrukh Shahzad" className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+              <img src="/images/doctor_farrukh.jpg" alt="Dr. Farrukh Shahzad" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-[800ms] ease-out group-hover:scale-105" />
             </div>
             <div className="p-8 flex flex-col bg-white">
-              <div className="flex justify-between items-baseline mb-4">
-                <h3 className="text-xl font-bold text-zinc-950">Dr. Farrukh Shahzad</h3>
+              <div className="flex flex-col lg:flex-row lg:justify-between lg:items-baseline gap-1 lg:gap-0 mb-4">
+                <h3 className="text-xl font-bold text-zinc-950 transition-colors duration-300 group-hover:text-amber-850">Dr. Farrukh Shahzad</h3>
                 <span className="text-[11px] font-bold text-amber-700 uppercase tracking-wider">Lead Physician</span>
               </div>
               <p className="text-sm text-zinc-600 leading-relaxed">
@@ -36,18 +42,25 @@ const Doctors = () => {
 
           {/* Doctor 2 */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-white rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group border border-zinc-100/50"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            whileHover={{ y: -6 }}
+            transition={{ 
+              type: 'spring', 
+              stiffness: 120, 
+              damping: 18, 
+              opacity: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+              delay: 0.1
+            }}
+            className="bg-white rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group border border-zinc-100/50 cursor-pointer"
           >
             <div className="w-full aspect-square sm:aspect-[4/3] bg-zinc-100 relative overflow-hidden shrink-0">
-              <img src="https://images.unsplash.com/photo-1683348858658-7c6b0eff2a16?q=80&w=687&auto=format&fit=crop" alt="Dr. Amna Farrukh" className="absolute inset-0 w-full h-full object-cover object-[center_35%] transition-transform duration-700 group-hover:scale-105" />
+              <img src="/images/doctor_amna.jpg" alt="Dr. Amna Farrukh" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-[center_35%] transition-transform duration-[800ms] ease-out group-hover:scale-105" />
             </div>
             <div className="p-8 flex flex-col bg-white">
-              <div className="flex justify-between items-baseline mb-4">
-                <h3 className="text-xl font-bold text-zinc-950">Dr. Amna Farrukh</h3>
+              <div className="flex flex-col lg:flex-row lg:justify-between lg:items-baseline gap-1 lg:gap-0 mb-4">
+                <h3 className="text-xl font-bold text-zinc-950 transition-colors duration-300 group-hover:text-amber-850">Dr. Amna Farrukh</h3>
                 <span className="text-[11px] font-bold text-amber-700 uppercase tracking-wider">Laser Specialist</span>
               </div>
               <p className="text-sm text-zinc-600 leading-relaxed">
@@ -56,7 +69,7 @@ const Doctors = () => {
             </div>
           </motion.div>
 
-       </div>
+        </div>
     </section>
   );
 };

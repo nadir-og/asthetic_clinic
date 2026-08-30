@@ -54,7 +54,7 @@ export default function Timeline() {
           <h2 className="font-serif text-4xl sm:text-6xl lg:text-7xl 2xl:text-8xl font-light tracking-tighter text-[#0A0A0A] text-center mb-6 leading-none">
             What To Expect
           </h2>
-          <p className="text-sm lg:text-base text-zinc-650 max-w-xl mx-auto text-center font-light">
+          <p className="text-sm lg:text-base text-zinc-600 max-w-xl mx-auto text-center font-light">
             From your preliminary Wood's Lamp diagnosis to clinical repair, understand our rigorous,
             patient-centric treatment path.
           </p>

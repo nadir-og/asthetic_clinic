@@ -87,7 +87,7 @@ export default function Bundles() {
                   {/* Treatments list */}
                   <ul className="flex flex-col gap-2.5 mb-6">
                     {bundle.treatments.map((t) => (
-                      <li key={t} className="flex items-start gap-2.5 text-sm text-zinc-650">
+                      <li key={t} className="flex items-start gap-2.5 text-sm text-zinc-600">
                         <div className="flex items-center justify-center h-5 w-5 rounded-full bg-zinc-100 border border-zinc-200 flex-shrink-0 mt-0.5">
                           <Check className="h-3 w-3 text-zinc-900" />
                         </div>

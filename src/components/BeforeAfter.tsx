@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { MoveHorizontal, FileText, Info } from 'lucide-react';
+import { motion, useMotionValue, useSpring, useTransform, LayoutGroup } from 'framer-motion';
+import { MoveHorizontal, FileText, Info, Sparkles } from 'lucide-react';
 import { beforeAfterCases } from '@/data/clinicData';
 export default function BeforeAfter() {
   const [activeCase, setActiveCase] = useState(0);
@@ -118,43 +118,52 @@ export default function BeforeAfter() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10 lg:mb-14"
+          className="text-center"
         >
           <h2 className="font-serif text-4xl lg:text-5xl font-bold text-zinc-950 text-center mb-4 leading-tight tracking-tight">
             Before & After Clinical Outcomes
           </h2>
-          <p className="font-sans text-sm md:text-base text-zinc-650 max-w-xl mx-auto text-center mb-12">
+          <p className="font-sans text-sm md:text-base text-zinc-600 max-w-xl mx-auto text-center mb-8 sm:mb-10">
             Interactive side-by-side medical evaluations. Slide the divider to inspect structural restoration.
           </p>
         </motion.div>
 
         {/* Tab Switcher */}
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex items-center justify-center p-1.5 bg-stone-100/80 backdrop-blur-md rounded-full border border-stone-200/80 mb-10 overflow-x-auto max-w-full no-scrollbar">
-            {beforeAfterCases.map((c, i) => {
-              const isActive = activeCase === i;
-              return (
-                <button
-                  key={c.id}
-                  onClick={() => {
-                    setActiveCase(i);
-                    sliderPosVal.set(50);
-                  }}
-                  className={
-                    isActive
-                      ? 'bg-zinc-950 text-white shadow-sm px-5 py-2 rounded-full text-xs font-semibold transition-all duration-300 whitespace-nowrap'
-                      : 'text-stone-600 hover:text-zinc-950 hover:bg-white/60 px-4 py-2 rounded-full text-xs font-medium transition-all duration-200 whitespace-nowrap'
-                  }
-                >
-                  <span className="relative z-10">{c.category}</span>
-                </button>
-              );
-            })}
+        <div className="flex justify-center mb-8 w-full px-6 md:px-0">
+          <div className="flex flex-wrap justify-center gap-2 p-1.5 max-w-full relative md:inline-flex md:items-center md:bg-stone-100/80 md:backdrop-blur-md md:rounded-full md:border md:border-stone-200/80">
+            <LayoutGroup id="before-after-filters">
+              {beforeAfterCases.map((c, i) => {
+                const isActive = activeCase === i;
+                return (
+                  <button
+                    key={c.id}
+                    onClick={() => {
+                      setActiveCase(i);
+                      sliderPosVal.set(50);
+                    }}
+                    className={`relative px-5 py-2 rounded-full text-xs font-semibold transition-colors duration-350 ease-out whitespace-nowrap z-10 ${
+                      isActive
+                        ? 'text-white'
+                        : 'text-stone-600 bg-stone-100 border border-stone-200/60 hover:text-zinc-950 hover:bg-stone-200/60 md:bg-transparent md:border-none'
+                    }`}
+                  >
+                    <span className="relative z-10">{c.category}</span>
+                    {isActive && (
+                      <motion.span
+                        layoutId="active-ba-tab-pill"
+                        className="absolute inset-0 bg-zinc-950 rounded-full -z-10 shadow-sm"
+                        transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </LayoutGroup>
           </div>
         </div>
 
         {/* Slider + Case note */}
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-12 items-center lg:items-stretch">
           {/* Slider Static Scroll Wrapper */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -186,6 +195,8 @@ export default function BeforeAfter() {
               <img
                 src={currentCase.afterImage}
                 alt="After clinical treatment"
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[700ms]"
                 draggable={false}
               />
@@ -198,6 +209,8 @@ export default function BeforeAfter() {
                 <img
                   src={currentCase.beforeImage}
                   alt="Before clinical treatment"
+                  loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[700ms]"
                   draggable={false}
                 />
@@ -237,7 +250,7 @@ export default function BeforeAfter() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-5"
+            className="lg:col-span-5 lg:h-full lg:flex lg:flex-col"
           >
             {/* Inner Case note (remounts cleanly on tab change) */}
             <motion.div
@@ -245,27 +258,39 @@ export default function BeforeAfter() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4 }}
+              className="lg:h-full lg:flex lg:flex-col lg:flex-1"
             >
-            <div className="bg-white border border-zinc-200/80 rounded-[2rem] p-6 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-400 flex flex-col justify-between">
-              <div className="flex items-center gap-3 mb-4">
-                <FileText className="h-5 w-5 text-zinc-950" />
-                <h3 className="font-serif text-2xl font-bold text-zinc-950 leading-snug">
-                  {currentCase.title}
-                </h3>
-              </div>
+            <motion.div 
+              whileHover={{ y: -6 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              className="bg-white border border-zinc-200/80 rounded-[2rem] p-6 lg:p-8 shadow-sm hover:shadow-xl flex flex-col justify-between lg:h-full lg:flex-1 cursor-pointer"
+            >
+              <div>
+                <div className="flex items-start gap-3 mb-4">
+                  <FileText className="h-5 w-5 text-zinc-950 flex-shrink-0 mt-1.5" />
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-zinc-950 leading-snug">
+                    {currentCase.title}
+                  </h3>
+                </div>
 
-              {/* Clinical Metadata */}
-              <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] font-semibold text-zinc-500 uppercase tracking-[0.2em] mb-5">
-                <span>{currentCase.fitzpatrick}</span>
-                <span>•</span>
-                <span>{currentCase.sessions}</span>
-                <span>•</span>
-                <span>{currentCase.parameter}</span>
-              </div>
+                {/* Clinical Metadata */}
+                <div className="flex flex-wrap gap-2 text-[9px] sm:text-[10px] font-semibold text-zinc-600 uppercase tracking-wider mb-5">
+                  <span className="bg-stone-100/90 border border-stone-200/60 rounded-md px-2.5 py-1">
+                    {currentCase.fitzpatrick}
+                  </span>
+                  <span className="bg-stone-100/90 border border-stone-200/60 rounded-md px-2.5 py-1">
+                    {currentCase.sessions}
+                  </span>
+                  <span className="bg-stone-100/90 border border-stone-200/60 rounded-md px-2.5 py-1">
+                    {currentCase.parameter}
+                  </span>
+                </div>
 
-              <p className="font-sans text-sm md:text-base text-zinc-600 leading-relaxed mb-6">
-                {currentCase.caseNote}
-              </p>
+                <p className="font-sans text-sm md:text-base text-zinc-600 leading-relaxed mb-6">
+                  {currentCase.caseNote}
+                </p>
+
+              </div>
 
               <div className="flex items-start gap-3 border-t border-zinc-150 pt-5">
                 <Info className="h-4 w-4 text-zinc-800 flex-shrink-0 mt-0.5" />
@@ -273,7 +298,7 @@ export default function BeforeAfter() {
                   Clinical parameters are customized after medical photography and diagnostic examination.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

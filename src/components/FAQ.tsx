@@ -99,12 +99,13 @@ export default function FAQ() {
             href={waQuestionLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative overflow-hidden bg-zinc-950 text-white border border-zinc-950 font-medium px-6 py-3.5 rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5 group"
+            className="relative overflow-hidden bg-zinc-950 text-white border border-zinc-950 font-medium px-6 py-3.5 rounded-2xl sm:rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5 group text-sm"
           >
             <span className="absolute inset-0 bg-white rounded-t-[100%] translate-y-[102%] group-hover:translate-y-0 group-hover:rounded-none transition-all duration-500 ease-out pointer-events-none" />
             <span className="relative z-10 flex items-center gap-2.5 text-white group-hover:text-zinc-950 transition-colors duration-500">
               <MessageCircle className="h-5 w-5 fill-current opacity-80" />
-              <span>Still have questions? Chat on WhatsApp</span>
+              <span className="hidden sm:inline">Still have questions? Chat on WhatsApp</span>
+              <span className="sm:hidden">Chat on WhatsApp</span>
             </span>
           </a>
         </motion.div>

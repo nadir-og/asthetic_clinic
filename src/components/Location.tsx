@@ -60,7 +60,7 @@ export default function Location() {
         </motion.div>
 
         {/* 2-column layout */}
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
           {/* Map card */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -145,22 +145,26 @@ export default function Location() {
             </div>
 
             {/* Inverting Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <a
+            <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3 pt-2">
+              <motion.a
                 href={telLink()}
-                className="relative overflow-hidden bg-white text-zinc-950 border border-stone-300/80 hover:border-zinc-950 font-medium px-8 py-3.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 flex-1 text-sm group"
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="relative overflow-hidden bg-white text-zinc-950 border border-stone-300/80 hover:border-zinc-950 font-medium px-8 py-3.5 rounded-full shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2 flex-1 text-sm group"
               >
                 <span className="absolute inset-0 bg-zinc-950 rounded-t-[100%] translate-y-[102%] group-hover:translate-y-0 group-hover:rounded-none transition-all duration-500 ease-out pointer-events-none" />
                 <span className="relative z-10 flex items-center justify-center gap-2 text-zinc-950 group-hover:text-white transition-colors duration-500">
                   <Phone className="h-4 w-4" />
                   <span>Call Reception</span>
                 </span>
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href={mapsLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative overflow-hidden bg-zinc-950 text-white border border-zinc-950 font-medium px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 flex-1 text-sm group"
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="relative overflow-hidden bg-zinc-950 text-white border border-zinc-950 font-medium px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-2 flex-1 text-sm group"
               >
                 <span className="absolute inset-0 bg-white rounded-t-[100%] translate-y-[102%] group-hover:translate-y-0 group-hover:rounded-none transition-all duration-500 ease-out pointer-events-none" />
                 <span className="relative z-10 flex items-center justify-center gap-2 text-white group-hover:text-zinc-950 transition-colors duration-500">
@@ -168,7 +172,7 @@ export default function Location() {
                   <span>Open in Google Maps</span>
                   <ExternalLink className="h-3.5 w-3.5 opacity-80" />
                 </span>
-              </a>
+              </motion.a>
             </div>
           </motion.div>
         </div>

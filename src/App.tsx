@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
+import Lenis from 'lenis';
 import { MessageCircle } from 'lucide-react';
 import { waPrivilegeLink } from '@/lib/whatsapp';
 import AmbientBackground from '@/components/AmbientBackground';
-import AnnouncementBar from '@/components/AnnouncementBar';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Doctors from '@/components/Doctors';
@@ -16,31 +16,44 @@ import Footer from '@/components/Footer';
 
 function App() {
   useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // premium easeOutExpo curve
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5,
+    });
+
+    let rafId: number;
+    function raf(time: number) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    }
+    rafId = requestAnimationFrame(raf);
+
+    // Expose lenis instance globally for section transitions
+    (window as any).lenis = lenis;
+
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
     window.scrollTo(0, 0);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+      (window as any).lenis = null;
+    };
   }, []);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const cards = document.querySelectorAll('.glass-card');
-      cards.forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        (card as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
-        (card as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
-      });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+
+
 
   return (
-    <div className="bg-[#FDFCFB] text-zinc-900 min-h-screen relative overflow-x-hidden w-full">
+    <div className="bg-[#FDFCFB] text-zinc-900 min-h-screen relative w-full pt-[80px]">
       <AmbientBackground />
-      <AnnouncementBar />
       <Navbar />
       <main className="w-full overflow-x-hidden">
         <Hero />

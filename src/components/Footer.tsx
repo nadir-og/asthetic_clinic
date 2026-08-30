@@ -14,14 +14,14 @@ export default function Footer() {
       <div className="absolute -bottom-20 -right-20 h-60 w-60 rounded-full bg-zinc-900/5 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-14 lg:py-20">
-        <div className="grid gap-10 lg:grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:grid-cols-4">
           {/* Brand */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-2"
+            className="md:col-span-6 lg:col-span-2"
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="relative h-12 w-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center">
@@ -62,6 +62,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
+            className="md:col-span-3 lg:col-span-1"
           >
             <h3 className="font-serif text-base font-bold text-white uppercase tracking-wider mb-4">
               Quick Links
@@ -86,6 +87,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            className="md:col-span-3 lg:col-span-1"
           >
             <h3 className="font-serif text-base font-bold text-white uppercase tracking-wider mb-4">
               Contact Us

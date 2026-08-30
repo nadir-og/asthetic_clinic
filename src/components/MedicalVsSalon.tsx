@@ -50,7 +50,7 @@ export default function MedicalVsSalon() {
         </motion.div>
 
         {/* 3-Column Luxury Standards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           {standards.map((std, idx) => {
             const Icon = std.icon;
             return (
@@ -58,9 +58,18 @@ export default function MedicalVsSalon() {
                 key={std.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="bg-white border border-stone-200/90 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:border-amber-200/80 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden group flex flex-col justify-between"
+                viewport={{ once: true, margin: '-50px' }}
+                whileHover={{ y: -8 }}
+                transition={{ 
+                  type: 'spring', 
+                  stiffness: 120, 
+                  damping: 18, 
+                  opacity: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+                  delay: idx * 0.1
+                }}
+                className={`bg-white border border-stone-200/90 rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:border-amber-200/80 relative overflow-hidden group flex flex-col justify-between cursor-pointer ${
+                  idx === 2 ? 'md:col-span-2 lg:col-span-1' : ''
+                }`}
               >
                 {/* Subtle Gold Gradient Corner Accent on hover */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-amber-100/30 rounded-full blur-2xl pointer-events-none group-hover:scale-150 transition-all duration-700"></div>
@@ -77,7 +86,7 @@ export default function MedicalVsSalon() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm text-zinc-650 leading-relaxed font-normal">
+                  <p className="text-sm text-zinc-600 leading-relaxed font-normal">
                     {std.description}
                   </p>
                 </div>

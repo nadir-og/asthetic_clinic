@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Star, BadgeCheck, Quote, Heart, Instagram } from 'lucide-react';
+import { Star, BadgeCheck, Quote, Heart } from 'lucide-react';
 import { testimonials, socialStats } from '@/data/clinicData';
 
 interface CounterProps {
@@ -85,7 +85,7 @@ export default function Testimonials() {
           <h2 className="font-serif text-4xl lg:text-5xl font-bold text-zinc-950 text-center mb-6 leading-tight tracking-tight">
             What Our Patients Say
           </h2>
-          <p className="font-sans text-sm md:text-base text-zinc-650 max-w-xl mx-auto text-center mb-12">
+          <p className="font-sans text-sm md:text-base text-zinc-600 max-w-xl mx-auto text-center mb-12">
             Real clinical reviews from verified patients who experienced deep skin and hair rejuvenation at Aura.
           </p>
         </motion.div>
@@ -124,11 +124,18 @@ export default function Testimonials() {
           {testimonials.map((t, index) => (
             <motion.div 
               key={index}
-              initial={{ opacity: 0, y: 45 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white rounded-[2rem] p-8 shadow-sm border border-zinc-100 flex flex-col relative hover:shadow-md transition-shadow duration-300"
+              viewport={{ once: true, margin: '-50px' }}
+              whileHover={{ y: -6 }}
+              transition={{ 
+                type: 'spring', 
+                stiffness: 120, 
+                damping: 18, 
+                opacity: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+                delay: index * 0.08
+              }}
+              className="bg-white rounded-[2rem] p-8 shadow-sm border border-zinc-100 flex flex-col relative hover:shadow-md cursor-pointer"
             >
               {/* Quote icon */}
               <Quote className="absolute top-4 right-6 h-8 w-8 text-zinc-950/5" />
@@ -150,6 +157,8 @@ export default function Testimonials() {
                 <img
                   src={t.avatar}
                   alt={t.name}
+                  loading="lazy"
+                  decoding="async"
                   className="h-10 w-10 rounded-full object-cover"
                 />
                 <div className="flex-1 min-w-0">
@@ -166,25 +175,6 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* Instagram CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-16 flex justify-center"
-        >
-          <a
-            href="https://instagram.com/aura.aesthetics"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2.5 px-6 py-2.5 bg-stone-100 hover:bg-white border border-stone-200 hover:border-zinc-950 text-zinc-900 rounded-full transition-all duration-300 shadow-sm"
-          >
-            <Instagram className="h-4 w-4 text-zinc-950 flex-shrink-0" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-800">
-              Follow Us on Instagram
-            </span>
-          </a>
-        </motion.div>
       </div>
     </section>
   );
