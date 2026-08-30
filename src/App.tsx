@@ -16,6 +16,16 @@ import Footer from '@/components/Footer';
 
 function App() {
   useEffect(() => {
+    // Check if the device has a fine pointer (like a mouse) or if it's a touch device
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    if (isTouch) {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+      return;
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // premium easeOutExpo curve
