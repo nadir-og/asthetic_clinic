@@ -117,9 +117,11 @@ export default function Treatments() {
 
                 <div>
                   {/* Image with zoom */}
-                  <div className="relative h-48 w-full overflow-hidden rounded-2xl mb-4 bg-stone-100">
+                  <div className="relative h-48 w-full overflow-hidden rounded-2xl mb-4 bg-stone-100 aspect-[600/384]">
                     <img
                       src={service.image}
+                      srcSet={`${service.image.replace('.webp', '-mobile.webp')} 360w, ${service.image} 600w`}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 384px"
                       alt={service.title}
                       width={600}
                       height={384}

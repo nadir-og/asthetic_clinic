@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Star, BadgeCheck, Quote, Heart } from 'lucide-react';
 import { testimonials, socialStats } from '@/data/clinicData';
@@ -11,12 +11,11 @@ interface CounterProps {
 }
 
 function RollingCounter({ target, suffix, isDecimal = false, duration = 1500 }: CounterProps) {
-  const [count, setCount] = useState(0);
   const ref = useRef<HTMLParagraphElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || !ref.current) return;
 
     let startTime: number | null = null;
     let animationFrameId: number;
@@ -30,25 +29,28 @@ function RollingCounter({ target, suffix, isDecimal = false, duration = 1500 }: 
       const easedProgress = easeOutQuart(progress);
       
       const currentVal = easedProgress * target;
-      setCount(currentVal);
+      const formattedValue = isDecimal ? currentVal.toFixed(1) : Math.floor(currentVal).toString();
+      if (ref.current) {
+        ref.current.textContent = `${formattedValue}${suffix}`;
+      }
 
       if (progress < 1) {
         animationFrameId = requestAnimationFrame(animate);
-      } else {
-        setCount(target);
+      } else if (ref.current) {
+        const finalVal = isDecimal ? target.toFixed(1) : Math.floor(target).toString();
+        ref.current.textContent = `${finalVal}${suffix}`;
       }
     };
 
     animationFrameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [isInView, target, duration]);
+  }, [isInView, target, duration, isDecimal, suffix]);
 
-  const formattedValue = isDecimal ? count.toFixed(1) : Math.floor(count).toString();
+  const initialVal = isDecimal ? '0.0' : '0';
 
   return (
     <p ref={ref} className="font-serif text-3xl lg:text-4xl font-bold text-zinc-950 tracking-tight">
-      {formattedValue}
-      <span>{suffix}</span>
+      {initialVal}{suffix}
     </p>
   );
 }

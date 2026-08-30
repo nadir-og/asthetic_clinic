@@ -29,18 +29,25 @@ export default function BeforeAfter() {
   // Position for the absolute central handle line
   const handleLeft = useTransform(smoothSliderPos, (pos) => `${pos}%`);
 
-  const updateSlider = (clientX: number) => {
+  const containerRectRef = useRef<{ left: number; width: number } | null>(null);
+
+  const updateSlider = (clientX: number, forceRecalc = false) => {
     if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    if (forceRecalc || !containerRectRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      containerRectRef.current = { left: rect.left, width: rect.width };
+    }
+    const { left, width } = containerRectRef.current;
+    if (width === 0) return;
+    const x = clientX - left;
+    const pct = Math.max(0, Math.min(100, (x / width) * 100));
     sliderPosVal.set(pct);
   };
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     e.currentTarget.setPointerCapture(e.pointerId);
     isDragging.current = true;
-    updateSlider(e.clientX);
+    updateSlider(e.clientX, true);
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -52,6 +59,7 @@ export default function BeforeAfter() {
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
     if (isDragging.current) {
       isDragging.current = false;
+      containerRectRef.current = null;
       try {
         e.currentTarget.releasePointerCapture(e.pointerId);
       } catch {
@@ -62,7 +70,7 @@ export default function BeforeAfter() {
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     isDragging.current = true;
-    updateSlider(e.touches[0].clientX);
+    updateSlider(e.touches[0].clientX, true);
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -73,6 +81,7 @@ export default function BeforeAfter() {
 
   const handleTouchEnd = () => {
     isDragging.current = false;
+    containerRectRef.current = null;
   };
 
   return (
@@ -195,6 +204,8 @@ export default function BeforeAfter() {
               {/* After image (background) */}
               <img
                 src={currentCase.afterImage}
+                srcSet={`${currentCase.afterImage.replace('.webp', '-mobile.webp')} 480w, ${currentCase.afterImage} 800w`}
+                sizes="(max-width: 768px) 100vw, 800px"
                 alt="After clinical treatment"
                 width={800}
                 height={600}
@@ -211,6 +222,8 @@ export default function BeforeAfter() {
               >
                 <img
                   src={currentCase.beforeImage}
+                  srcSet={`${currentCase.beforeImage.replace('.webp', '-mobile.webp')} 480w, ${currentCase.beforeImage} 800w`}
+                  sizes="(max-width: 768px) 100vw, 800px"
                   alt="Before clinical treatment"
                   width={800}
                   height={600}

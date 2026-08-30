@@ -171,7 +171,10 @@ export default function Hero() {
           >
             <img
               src={heroImage}
+              srcSet="/images/hero-mobile.webp 480w, /images/hero.webp 1000w"
+              sizes="(max-width: 768px) 100vw, 520px"
               alt="Aura Medical Aesthetics clinic interior"
+              loading="eager"
               fetchPriority="high"
               decoding="async"
               width={600}

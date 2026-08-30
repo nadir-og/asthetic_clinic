@@ -1,5 +1,7 @@
 import { useEffect, lazy, Suspense } from 'react';
 import { MessageCircle } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { waPrivilegeLink } from '@/lib/whatsapp';
 import AmbientBackground from '@/components/AmbientBackground';
 import Navbar from '@/components/Navbar';
@@ -110,6 +112,10 @@ function App() {
           <MessageCircle className="h-6 w-6 fill-white/20 relative z-10" />
         </a>
       </div>
+
+      {/* Vercel Speed Insights & Analytics with proper route tracking */}
+      <Analytics />
+      <SpeedInsights route={typeof window !== 'undefined' ? window.location.pathname || '/' : '/'} />
     </div>
   );
 }
